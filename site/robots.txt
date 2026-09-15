@@ -1,0 +1,5 @@
+# Pulse Fulfilment — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://pulsefulfilment.co.uk/sitemap.xml

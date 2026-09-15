@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sectors — Pulse Fulfilment | Beauty, Supplements &amp; More</title>
+<meta name="description" content="Specialist fulfilment by sector — beauty, supplements, pet, fashion, food & drink, subscription boxes and more." />
+<link rel="canonical" href="https://pulsefulfilment.co.uk/sectors" />
+<meta property="og:url" content="https://pulsefulfilment.co.uk/sectors" />
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" type="image/png" href="../assets/logo-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="../assets/styles.css" />
+<style>
+.page-hero { padding-block: clamp(48px,7vw,92px) clamp(20px,3vw,36px); position:relative; overflow:hidden; text-align:center; }
+.page-hero .blob { position:absolute; width:440px;height:440px;border-radius:50%;filter:blur(74px);opacity:.4;background:radial-gradient(circle,#FFEFCF,transparent 70%); top:-150px; left:50%; transform:translateX(-50%); pointer-events:none; }
+.page-hero h1 { font-size: clamp(2.4rem,5.4vw,4.2rem); }
+.page-hero .lead { max-width:52ch; margin:18px auto 0; }
+
+.explorer { display:grid; grid-template-columns: 300px 1fr; gap:24px; align-items:start; margin-top:8px; }
+.sec-list { display:grid; gap:8px; }
+.sec-btn { display:flex; align-items:center; gap:13px; text-align:left; padding:14px 16px; border-radius:var(--r); border:1px solid var(--line); background:var(--white); cursor:pointer; font-family:var(--display); font-weight:600; font-size:15px; transition:all .18s; width:100%; color:var(--ink); }
+.sec-btn:hover { border-color:var(--ink-soft); }
+.sec-btn.on { background:var(--ink); color:#fff; border-color:transparent; }
+.sec-btn .ge { width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;background:var(--grad-soft);flex:none; }
+.sec-btn.on .ge { background:rgba(255,255,255,.15); }
+
+.sec-panel { background:var(--white); border:1px solid var(--line); border-radius:var(--r-xl); padding:clamp(26px,3.5vw,44px); min-height:420px; }
+.sec-panel .pe { width:64px;height:64px;border-radius:17px;background:var(--grad);display:grid;place-items:center;font-size:30px;margin-bottom:18px; }
+.sec-panel h2 { font-size:clamp(1.7rem,3vw,2.4rem); }
+.sec-panel .desc { color:var(--ink-soft); max-width:60ch; margin-top:14px; font-size:16px; }
+.sec-feats { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:28px; }
+.sf { display:flex; gap:13px; padding:18px; border:1px solid var(--line); border-radius:var(--r); background:var(--paper); }
+.sf .d { width:9px;height:9px;border-radius:50%;background:var(--grad);margin-top:7px;flex:none; }
+.sf .t { font-family:var(--display); font-weight:600; font-size:15px; }
+.sf .s { font-size:13px; color:var(--ink-soft); margin-top:3px; }
+.sec-stats { display:flex; gap:30px; margin-top:28px; flex-wrap:wrap; }
+.sec-stats .n { font-family:var(--display); font-weight:700; font-size:1.8rem; background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent; }
+.sec-stats .l { font-size:13px; color:var(--ink-soft); }
+
+@media (max-width:900px){ .explorer{ grid-template-columns:1fr; } .sec-list{ grid-template-columns:repeat(2,1fr); } .sec-feats{ grid-template-columns:1fr; } }
+@media (max-width:560px){ .sec-list{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap-wide nav">
+    <a class="logo" href="/" aria-label="Pulse Fulfilment home"><img class="logo-img" src="../assets/logo.png" alt="Pulse Fulfilment" width="172" height="86" /></a>
+    <nav><ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/integrations">Integrations</a></li>
+      <li><a href="/sectors" class="active">Sectors</a></li><li><a href="/about">About</a></li>
+    </ul></nav>
+    <div class="nav-cta"><a href="/contact" class="btn btn-grad">Book a call <span class="arr">→</span></a><button class="nav-toggle btn btn-ghost" aria-expanded="false">Menu</button></div>
+  </div>
+</header>
+<div class="mobile-drawer"><a href="/">Home</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/integrations">Integrations</a><a href="/sectors">Sectors</a><a href="/about">About</a><a href="/contact" class="btn btn-grad">Book a call →</a></div>
+
+<section class="page-hero">
+  <span class="blob"></span>
+  <div class="wrap">
+    <span class="eyebrow center reveal">Sectors</span>
+    <h1 class="reveal d1" style="margin-top:14px;">Fulfilment tuned to <span class="grad-text">your products</span></h1>
+    <p class="lead reveal d2">Every category has its quirks — fragile cosmetics, batch-tracked supplements, oversized pet food. Pick your sector to see how Pulse handles the specifics.</p>
+  </div>
+</section>
+
+<section class="section-pad" style="padding-top:clamp(30px,4vw,48px);">
+  <div class="wrap-wide">
+    <div class="explorer">
+      <div class="sec-list reveal" id="secList"></div>
+      <div class="sec-panel reveal d1" id="secPanel"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-pad" style="padding-top:0;">
+  <div class="wrap">
+    <div class="reveal" style="position:relative;overflow:hidden;background:var(--grad);color:#fff;border-radius:var(--r-xl);padding:clamp(40px,6vw,76px);text-align:center;">
+      <svg style="position:absolute;inset:0;opacity:.22;" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0 150 H300 L340 150 L370 60 L405 240 L440 150 H700 L740 150 L770 70 L805 230 L840 150 H1200" stroke="#fff" stroke-width="2.5" fill="none"/></svg>
+      <div style="position:relative;z-index:2;">
+        <h2 style="font-size:clamp(2rem,4.4vw,3.2rem);">Whatever you sell, we'll handle it</h2>
+        <p style="color:rgba(255,255,255,.92);max-width:46ch;margin:16px auto 30px;">Tell us about your products and we'll tailor a fulfilment plan to your sector.</p>
+        <a href="/contact" class="btn btn-light">Book a call <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap-wide">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="/" style="margin-bottom:16px;"><img class="logo-mark-img" src="../assets/logo-mark.png" alt="" width="40" height="40" /><span class="logo-word" style="color:#fff;">PULSE<small style="color:#9aa0d8;">FULFILMENT</small></span></a>
+        <p style="color:#9aa0d8;font-size:14px;max-width:30ch;">Order fulfilment &amp; 3PL built for growing ecommerce brands. We grow when you grow.</p>
+        <p style="color:#9aa0d8;font-size:14px;margin-top:14px;">Unit 3–4 Ocean Park, Dock Road,<br/>Wallasey, CH41 1HW<br/>Tel: <a href="tel:01513293803">0151 329 3803</a><br/><a href="mailto:sales@pulsefulfilment.co.uk" style="color:inherit;">sales@pulsefulfilment.co.uk</a></p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="/services">Services</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/sectors">Sectors</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/contact">Book a call</a></li><li><a href="/news">News</a></li><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy Policy</a></li></ul></div>
+      <div><h4>Plans</h4><ul><li><a href="/pricing">Bronze · 300/mo</a></li><li><a href="/pricing">Silver · 750/mo</a></li><li><a href="/pricing">Gold · 2,000/mo</a></li><li><a href="/pricing">Platinum · 5,000+/mo</a></li></ul></div>
+    </div>
+    <div class="footer-locations">
+      <h4>Fulfilment locations</h4>
+      <ul class="footer-loc-links">
+        <li><a href="/locations/london">Fulfilment in London</a></li>
+        <li><a href="/locations/manchester">Fulfilment in Manchester</a></li>
+        <li><a href="/locations/birmingham">Fulfilment in Birmingham</a></li>
+        <li><a href="/locations/leeds">Fulfilment in Leeds</a></li>
+        <li><a href="/locations/glasgow">Fulfilment in Glasgow</a></li>
+        <li><a href="/locations/liverpool">Fulfilment in Liverpool</a></li>
+        <li><a href="/locations/newcastle">Fulfilment in Newcastle</a></li>
+        <li><a href="/locations/nottingham">Fulfilment in Nottingham</a></li>
+        <li><a href="/locations/sheffield">Fulfilment in Sheffield</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Pulse Fulfilment Limited. All rights reserved.</span><span>Wallasey, United Kingdom 🇬🇧</span></div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script>
+(function(){
+  const sectors = [
+    {id:'beauty', e:'💄', nm:'Beauty & Cosmetics', desc:'Fragile, premium and unboxing-led — beauty brands need careful handling and packaging that protects the product and wows the customer.', feats:[['Protective packing','Bubble, void-fill and fragile handling for glass and pumps'],['Batch & expiry control','Track lot numbers and rotate stock by shelf life'],['Branded unboxing','Tissue, inserts and custom mailers as standard'],['Gift & sample kitting','Build sets, GWP bundles and influencer PR boxes']], stats:[['99.8%','Pick accuracy'],['Same-day','Dispatch < 2pm']]},
+    {id:'supps', e:'💊', nm:'Health & Supplements', desc:'Compliance and freshness matter. We manage batch tracking, expiry rotation and the temperature-aware storage your supplements need.', feats:[['Batch & lot tracking','Full traceability for recalls and compliance'],['FEFO rotation','First-expiry-first-out picking to protect shelf life'],['Subscription ready','Recurring orders and replenishment handled automatically'],['Compliant labelling','Barcoding and regulatory label application']], stats:[['Batch','Level traceability'],['FEFO','Stock rotation']]},
+    {id:'pet', e:'🐾', nm:'Pet & Animal Supplies', desc:'From bulky food sacks to small accessories, we handle mixed-weight catalogues and heavy-item shipping without blowing your postage budget.', feats:[['Heavy & bulky handling','Pallet-in, parcel-out for large food and litter'],['Smart carrier routing','Weight-based carrier selection to cut postage'],['Mixed-basket picking','Combine bulky and small items in one parcel'],['Subscription & repeat','Auto-replenish food and treats on schedule']], stats:[['14+','Carriers for best rate'],['Bulky','Items welcome']]},
+    {id:'fashion', e:'👕', nm:'Fashion & Apparel', desc:'High SKU counts, sizes and seasonal peaks. We keep variants accurate and returns fast so your customers keep coming back.', feats:[['Variant & size control','Accurate SKU/size/colour management'],['Fast returns','Inspect, restock and refund quickly'],['Poly & box options','Right-sized packaging to cut cost and waste'],['Peak-ready','Scale through seasonal spikes without delay']], stats:[['Fast','Returns turnaround'],['Peak','Season scaling']]},
+    {id:'electronics', e:'🔌', nm:'Electronics', desc:'Higher value, serial-tracked and ESD-sensitive. We protect your stock with secure storage and careful, insured dispatch.', feats:[['Serial number capture','Track individual units for warranty & returns'],['Secure storage','Restricted, monitored areas for high-value SKUs'],['Protective packing','Anti-static and shock-protective materials'],['Signed & tracked','Insured, signature services for high-value orders']], stats:[['Serial','Level tracking'],['Secure','Storage zones']]},
+    {id:'food', e:'🍫', nm:'Food & Drink', desc:'Date-critical and often fragile. We rotate stock by expiry, handle ambient and short-life goods and pack to arrive perfectly.', feats:[['FEFO & expiry control','Ship freshest stock first, every time'],['Fragile & leak-safe packing','Protective packing for jars, bottles and treats'],['Date-code scanning','Capture best-before dates on receipt'],['Letterbox-friendly','Right-sized packs for slimline delivery']], stats:[['FEFO','Expiry rotation'],['Date','Code capture']]},
+    {id:'stationery', e:'✏️', nm:'Stationery & Gifts', desc:'Presentation is everything. We make every gift order feel considered with neat packing, inserts and personalisation options.', feats:[['Gift packing','Tissue, ribbon and premium presentation'],['Personalisation','Add gift notes and custom inserts'],['Bundle building','Curate gift sets and seasonal collections'],['Letterbox formats','Slim packs that fit through the door']], stats:[['Gift','Ready packing'],['Custom','Inserts & notes']]},
+    {id:'luxury', e:'💎', nm:'Luxury Goods', desc:'White-glove handling for premium brands — secure storage, immaculate packing and a delivery experience that matches the price tag.', feats:[['White-glove packing','Flawless presentation, every order'],['Secure storage','Monitored, access-controlled areas'],['Signed delivery','Insured, signature and premium services'],['Branded experience','Bespoke packaging and inserts']], stats:[['White','Glove service'],['Insured','Premium delivery']]},
+    {id:'media', e:'🎵', nm:'Music & Media', desc:'Vinyl, CDs and merch need rigid, damage-proof packing. We protect the product and ship fast for release-day demand.', feats:[['Rigid packing','Vinyl mailers and corner protection'],['Release-day scaling','Handle pre-order spikes with ease'],['Bundle merch','Combine records, prints and apparel'],['Letterbox & parcel','Right format for every item']], stats:[['Release','Day ready'],['Rigid','Protective packing']]},
+    {id:'books', e:'📚', nm:'Books', desc:'High volume, low margin — efficiency is everything. We pick fast, pack protectively and route to the cheapest viable carrier.', feats:[['High-volume picking','Fast, accurate at scale'],['Protective mailers','Book wraps and rigid envelopes'],['Cost-smart routing','Cheapest viable carrier per parcel'],['Letterbox-friendly','Slimline packs to cut postage']], stats:[['High','Volume ready'],['Cost','Smart routing']]},
+    {id:'subs', e:'📦', nm:'Subscription Boxes', desc:'Recurring builds on a schedule. We assemble, pack and dispatch your monthly editions and keep churn-killing reliability high.', feats:[['Curated builds','Assemble multi-item boxes to spec'],['Scheduled dispatch','Batch sends on your renewal dates'],['Inserts & themes','Monthly cards, themes and surprises'],['Scales with renewals','Grow your base without growing your stress']], stats:[['Monthly','Batch builds'],['Scales','With renewals']]},
+    {id:'sport', e:'🏅', nm:'Sporting Goods', desc:'Bulky, awkward and high-demand at peak. We handle oversized items and seasonal spikes with weight-smart carrier routing.', feats:[['Oversized handling','Large and awkward items managed'],['Weight-smart routing','Best carrier for heavy parcels'],['Peak scaling','Handle seasonal demand surges'],['Kit & bundle','Assemble equipment sets']], stats:[['Bulky','Items welcome'],['Peak','Season scaling']]}
+  ];
+  const list = document.getElementById('secList');
+  const panel = document.getElementById('secPanel');
+  function renderPanel(s){
+    panel.innerHTML = '<span class="pe">'+s.e+'</span><h2>'+s.nm+'</h2><p class="desc">'+s.desc+'</p>'+
+      '<div class="sec-feats">'+s.feats.map(f=>'<div class="sf"><span class="d"></span><div><div class="t">'+f[0]+'</div><div class="s">'+f[1]+'</div></div></div>').join('')+'</div>'+
+      '<div class="sec-stats">'+s.stats.map(st=>'<div><div class="n">'+st[0]+'</div><div class="l">'+st[1]+'</div></div>').join('')+
+      '<div style="margin-left:auto;align-self:center;"><a href="/contact" class="btn btn-grad">Discuss '+s.nm.split(' ')[0]+' <span class="arr">→</span></a></div></div>';
+  }
+  sectors.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.className='sec-btn'+(i===0?' on':'');
+    b.innerHTML='<span class="ge">'+s.e+'</span>'+s.nm;
+    b.addEventListener('click',()=>{ list.querySelectorAll('.sec-btn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); renderPanel(s); });
+    list.appendChild(b);
+  });
+  renderPanel(sectors[0]);
+})();
+</script>
+</body>
+</html>

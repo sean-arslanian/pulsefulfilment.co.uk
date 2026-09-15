@@ -1,0 +1,114 @@
+Category,Live .co.uk URL,New site URL,Status,Action / Notes
+Core,/,/,Match,
+Core,/pricing/,/pricing,Match,Trailing slash only
+Core,/integrations/,/integrations,Match,Trailing slash only
+Core,/news/,/news,Match,Trailing slash only
+Core,/services/,/services,Match,Trailing slash only
+Core,/contact-us/,/contact,301,Slug changed
+Core,/privacy-policy/,/privacy,301,Slug changed
+Core,/ecommerce-fulfilment/,/services,301,Service page consolidated into /services
+Core,/returns-managment/,/services,301,Service page consolidated into /services (live slug has typo)
+Core,/thank-you/,/contact,301,Form thank-you page; new forms need their own success state
+Core,/value-added-services/,/services,301,Not in live sitemap; keep rule as safety net
+Pricing tier,/platinum/,/pricing,301,Tier page removed
+Pricing tier,/gold/,/pricing,301,Tier page removed
+Pricing tier,/silver/,/pricing,301,Tier page removed
+Pricing tier,/bronze/,/pricing,301,Tier page removed
+Sector,/beauty-cosmetics-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/health-supplements-fufilment/,/sectors,301,Consolidated into /sectors
+Sector,/pet-animal-supplies-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/fashion-apparel-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/electronics-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/food-drink-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/stationery-gifts-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/luxury-goods-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/music-media-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/book-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/subscription-box-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/sporting-goods-fulfilment/,/sectors,301,Consolidated into /sectors
+Sector,/subscription-boxe-fulfilment/,/sectors,301,Typo variant linked from live homepage
+Location,/ecommerce-fulfilment-liverpool/,/locations/liverpool,301,Direct equivalent
+Integration,/amazon/,/integrations/amazon-fbm,301,Live page covered FBM + SFP; FBM chosen as primary
+Integration,/api/,/integrations/custom-api,301,Path + slug change
+Integration,/argos/,/integrations/argos,301,Path + slug change
+Integration,/bandcamp/,/integrations/bandcamp,301,Path + slug change
+Integration,/big-commerce/,/integrations/bigcommerce,301,Path + slug change
+Integration,/blue-park/,/integrations/bluepark,301,Path + slug change
+Integration,/bright-pearl/,/integrations/brightpearl,301,Path + slug change
+Integration,/channel-advisor/,/integrations/channeladvisor,301,Path + slug change
+Integration,/cs-cart/,/integrations/cs-cart,301,Path + slug change
+Integration,/dear-systems/,/integrations/dear-systems,301,Path + slug change
+Integration,/ebay-fulfilment/,/integrations/ebay,301,Path + slug change
+Integration,/ecwid/,/integrations/ecwid,301,Path + slug change
+Integration,/ekm-power-shop/,/integrations/ekm-powershop,301,Path + slug change
+Integration,/fruugo/,/integrations/fruugo,301,Path + slug change
+Integration,/ftp-import-export/,/integrations/ftp,301,Path + slug change
+Integration,/groupon/,/integrations/groupon,301,Path + slug change
+Integration,/lightspeed/,/integrations/lightspeed,301,Path + slug change
+Integration,/magento/,/integrations/magento,301,Path + slug change
+Integration,/mirkal/,/integrations/mirakl,301,Live slug misspelt
+Integration,/not-on-the-high-street/,/integrations/not-on-the-high-street,301,Path + slug change
+Integration,/oracle-netsuite/,/integrations/netsuite,301,Path + slug change
+Integration,/shopify/,/integrations/shopify,301,Path + slug change
+Integration,/shopwired/,/integrations/shopwired,301,Path + slug change
+Integration,/squarespace/,/integrations/squarespace,301,Path + slug change
+Integration,/the-range-market-place/,/integrations/the-range,301,Path + slug change
+Integration,/tiktok-shop/,/integrations/tiktok-shop,301,Path + slug change
+Integration,/veeqo/,/integrations/veeqo,301,Path + slug change
+Integration,/wayfair/,/integrations/wayfair,301,Path + slug change
+Integration,/wish/,/integrations/wish,301,Path + slug change
+Integration,/woo-commerce/,/integrations/woocommerce,301,Path + slug change
+Integration,/wowcher/,/integrations/wowcher,301,Path + slug change
+Integration,/zendesk/,/integrations/zendesk,301,Path + slug change
+Integration,/3dcart/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/apc-overnight/,/integrations,Missing,Carrier — no page on new site; 301 to hub or add page
+Integration,/blue-jay-solutions/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/channel-engine/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/dhl-parcel/,/integrations,Missing,Carrier — no page on new site; 301 to hub or add page
+Integration,/fedex/,/integrations,Missing,Carrier — no page on new site; 301 to hub or add page
+Integration,/inventory-planner/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/royal-mail/,/integrations,Missing,Carrier — no page on new site; 301 to hub or add page
+Integration,/sap-business-by-design/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/store-feeder/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/the-pallet-network/,/integrations,Missing,Carrier — no page on new site; 301 to hub or add page
+Integration,/virtual-stock/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/volo/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/volusion/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/weebly/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Integration,/yumbles/,/integrations,Missing,Marketplace — no page on new site; 301 to hub or add page
+Integration,/zedonk/,/integrations,Missing,Platform — no page on new site; 301 to hub or add page
+Blog,/2025/03/05/3pl-services-guide-benefits-types-how-to-choose/,/blog/how-to-choose-a-3pl,301,Only live post; closest new equivalent
+Blog,/category/uncategorised/,/blog,301,WP category archive
+Blog,/author/*,/blog,301,WP author archives (pattern rule)
+WP,/wp-content/uploads/*,/,301,"Old image URLs — pattern rule to homepage, or leave to 404"
+WP,"/wp-admin, /wp-login.php, /xmlrpc.php",—,Gone,Return 410 so bots stop probing
+New,,/about,New,No live equivalent; submit via sitemap
+New,,/get-pricing,New,No live equivalent; submit via sitemap
+New,,/blog,New,No live equivalent; submit via sitemap
+New,,/sectors,New,No live equivalent; submit via sitemap
+New,,/locations/leeds,New,No live equivalent; submit via sitemap
+New,,/locations/london,New,No live equivalent; submit via sitemap
+New,,/locations/glasgow,New,No live equivalent; submit via sitemap
+New,,/locations/newcastle,New,No live equivalent; submit via sitemap
+New,,/locations/sheffield,New,No live equivalent; submit via sitemap
+New,,/locations/birmingham,New,No live equivalent; submit via sitemap
+New,,/locations/manchester,New,No live equivalent; submit via sitemap
+New,,/locations/nottingham,New,No live equivalent; submit via sitemap
+New,,/news/welcome-to-the-new-website,New,No live equivalent; submit via sitemap
+New,,/blog/keep-your-stock-in-sync,New,No live equivalent; submit via sitemap
+New,,/blog/going-international-vat-ioss,New,No live equivalent; submit via sitemap
+New,,/blog/cut-off-times-next-day-promises,New,No live equivalent; submit via sitemap
+New,,/blog/peak-season-readiness-q4-checklist,New,No live equivalent; submit via sitemap
+New,,/blog/returns-that-dont-cost-the-customer,New,No live equivalent; submit via sitemap
+New,,/integrations/amazon-sfp,New,No live equivalent; submit via sitemap
+New,,/integrations/easywebstore,New,No live equivalent; submit via sitemap
+New,,/integrations/etsy,New,No live equivalent; submit via sitemap
+New,,/integrations/gifts-less-ordinary,New,No live equivalent; submit via sitemap
+New,,/integrations/hard-to-find,New,No live equivalent; submit via sitemap
+New,,/integrations/limelight,New,No live equivalent; submit via sitemap
+New,,/integrations/linnworks,New,No live equivalent; submit via sitemap
+New,,/integrations/manomano,New,No live equivalent; submit via sitemap
+New,,/integrations/onbuy,New,No live equivalent; submit via sitemap
+New,,/integrations/prestashop,New,No live equivalent; submit via sitemap
+New,,/integrations/realde,New,No live equivalent; submit via sitemap
+New,,/integrations/visualsoft,New,No live equivalent; submit via sitemap

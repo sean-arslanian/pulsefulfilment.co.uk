@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Get Your Pricing — Pulse Fulfilment | Bespoke Quote</title>
+<meta name="description" content="Tell us your brand, order volume and sectors — we'll build a bespoke fulfilment quote and walk you through it." />
+<link rel="canonical" href="https://pulsefulfilment.co.uk/get-pricing" />
+<meta property="og:url" content="https://pulsefulfilment.co.uk/get-pricing" />
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" type="image/png" href="../assets/logo-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="../assets/styles.css" />
+<style>
+.contact-hero { padding-block: clamp(48px,7vw,80px) 0; position:relative; overflow:hidden; }
+.contact-hero .blob { position:absolute; width:440px;height:440px;border-radius:50%;filter:blur(74px);opacity:.4;background:radial-gradient(circle,#FFD9E8,transparent 70%); top:-160px; right:-40px; pointer-events:none; }
+.c-grid { display:grid; grid-template-columns: 1fr 1.05fr; gap:clamp(32px,5vw,64px); align-items:start; }
+.c-grid h1 { font-size:clamp(2.3rem,4.8vw,3.8rem); }
+.c-grid .lead { margin-top:18px; max-width:42ch; }
+
+.c-points { display:grid; gap:14px; margin-top:30px; }
+.cp { display:flex; gap:14px; align-items:flex-start; }
+.cp .ic { width:44px;height:44px;border-radius:12px;background:var(--grad-soft);display:grid;place-items:center;flex:none; }
+.cp .ic .n { font-family:var(--display); font-weight:700; color:var(--pink-deep); font-size:18px; }
+.cp .t { font-family:var(--display); font-weight:600; font-size:15px; }
+.cp .s { font-size:14px; color:var(--ink-soft); }
+
+.c-contactcard { margin-top:30px; padding:22px; border:1px solid var(--line); border-radius:var(--r-lg); background:var(--white); display:grid; gap:12px; }
+.c-contactcard a { font-family:var(--display); font-weight:600; }
+.c-contactcard .row { display:flex; align-items:center; gap:12px; font-size:15px; }
+.c-contactcard .row span.k { color:var(--ink-soft); width:64px; font-size:13px; }
+
+/* form */
+.form-card { background:var(--white); border:1px solid var(--line); border-radius:var(--r-xl); padding:clamp(26px,3.5vw,42px); box-shadow:var(--shadow); }
+.plan-pill { display:inline-flex; align-items:center; gap:9px; font-family:var(--display); font-weight:600; font-size:13px; padding:8px 15px; border-radius:100px; background:var(--grad-soft); color:var(--pink-deep); margin-bottom:18px; }
+.plan-pill .dot { width:9px; height:9px; border-radius:50%; background:var(--grad); }
+.fld { margin-bottom:18px; }
+.fld label { display:block; font-family:var(--display); font-weight:600; font-size:14px; margin-bottom:7px; }
+.fld input, .fld select, .fld textarea {
+  width:100%; padding:13px 15px; border:1px solid var(--line); border-radius:var(--r-sm);
+  font-family:var(--body); font-size:15px; color:var(--ink); background:var(--paper); transition:border-color .15s, box-shadow .15s;
+}
+.fld input:focus, .fld select:focus, .fld textarea:focus { outline:none; border-color:var(--pink); box-shadow:0 0 0 3px rgba(255,46,126,.12); background:#fff; }
+.fld.err input, .fld.err select { border-color:#E11367; }
+.fld .msg { color:#E11367; font-size:12.5px; margin-top:6px; display:none; }
+.fld.err .msg { display:block; }
+.row2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.chips { display:flex; gap:8px; flex-wrap:wrap; }
+.chip { padding:9px 15px; border:1px solid var(--line); border-radius:100px; background:var(--paper); cursor:pointer; font-family:var(--display); font-weight:600; font-size:13px; transition:all .15s; user-select:none; }
+.chip:hover { border-color:var(--pink); }
+.chip.on { background:var(--ink); color:#fff; border-color:transparent; }
+.sector-chips .chip.on { background:var(--grad); }
+.form-submit { width:100%; justify-content:center; margin-top:6px; }
+.success { text-align:center; padding:24px 6px; display:none; }
+.success.show { display:block; }
+.success .tick { width:72px;height:72px;border-radius:50%;background:var(--grad);display:grid;place-items:center;margin:0 auto 20px;color:#fff;font-size:34px; }
+.form-fields.hide { display:none; }
+
+@media (max-width:900px){ .c-grid{ grid-template-columns:1fr; } }
+@media (max-width:560px){ .row2{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap-wide nav">
+    <a class="logo" href="/" aria-label="Pulse Fulfilment home"><img class="logo-img" src="../assets/logo.png" alt="Pulse Fulfilment" width="172" height="86" /></a>
+    <nav><ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/integrations">Integrations</a></li>
+      <li><a href="/sectors">Sectors</a></li><li><a href="/about">About</a></li>
+    </ul></nav>
+    <div class="nav-cta"><a href="/contact" class="btn btn-grad">Book a call <span class="arr">→</span></a><button class="nav-toggle btn btn-ghost" aria-expanded="false">Menu</button></div>
+  </div>
+</header>
+<div class="mobile-drawer"><a href="/">Home</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/integrations">Integrations</a><a href="/sectors">Sectors</a><a href="/about">About</a><a href="/contact" class="btn btn-grad">Book a call →</a></div>
+
+<section class="contact-hero section-pad" style="padding-bottom:clamp(50px,7vw,90px);">
+  <span class="blob"></span>
+  <div class="wrap-wide c-grid">
+    <div>
+      <span class="eyebrow reveal">Get your pricing</span>
+      <h1 class="reveal d1" style="margin-top:14px;">Your bespoke <span class="grad-text">quote</span>, built around you</h1>
+      <p class="lead reveal d2">Because every brand ships differently, we price each one individually. Share a few details and we'll prepare a tailored quote — then arrange a quick meeting to walk you through it.</p>
+      <div class="c-points reveal d2">
+        <div class="cp"><span class="ic"><span class="n">1</span></span><div><div class="t">Tell us about your brand</div><div class="s">Your volume and product sectors shape the right plan and rate.</div></div></div>
+        <div class="cp"><span class="ic"><span class="n">2</span></span><div><div class="t">We build your bespoke quote</div><div class="s">Transparent pricing tailored to your products and channels.</div></div></div>
+        <div class="cp"><span class="ic"><span class="n">3</span></span><div><div class="t">We book a meeting to walk you through it</div><div class="s">A genuine conversation — no hard sell, just real answers.</div></div></div>
+      </div>
+      <div class="c-contactcard reveal d2">
+        <div class="row"><span class="k">Call</span><a href="tel:01513293803">0151 329 3803</a></div>
+        <div class="row"><span class="k">Email</span><a href="mailto:sales@pulsefulfilment.co.uk">sales@pulsefulfilment.co.uk</a></div>
+      </div>
+    </div>
+
+    <div class="form-card reveal d1">
+      <div class="form-fields" id="formFields">
+        <div class="plan-pill" id="planPill" hidden><span class="dot"></span><span id="planPillText">Bronze plan</span></div>
+        <h2 class="h-md" style="margin-bottom:6px;">Get your pricing</h2>
+        <p class="muted" style="font-size:14px;margin-bottom:24px;">A few quick details and we'll prepare your bespoke quote.</p>
+        <form id="priceForm" novalidate>
+          <input type="hidden" id="plan" name="plan" value="" />
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+          <div class="row2">
+            <div class="fld"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Alex Smith" /><div class="msg">Please enter your name.</div></div>
+            <div class="fld"><label for="company">Business name</label><input id="company" name="company" type="text" autocomplete="organization" placeholder="Your brand" /><div class="msg">Please enter your business name.</div></div>
+          </div>
+          <div class="row2">
+            <div class="fld"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@brand.com" /><div class="msg">Please enter a valid email.</div></div>
+            <div class="fld"><label for="phone">Contact number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="07…" /><div class="msg">Please enter a contact number.</div></div>
+          </div>
+          <div class="fld" id="volFld">
+            <label>Roughly how many orders a month?</label>
+            <div class="chips" id="volChips">
+              <span class="chip" data-v="Under 300">Under 300</span>
+              <span class="chip" data-v="300–750">300–750</span>
+              <span class="chip" data-v="750–2,000">750–2,000</span>
+              <span class="chip" data-v="2,000–5,000">2,000–5,000</span>
+              <span class="chip" data-v="5,000+">5,000+</span>
+            </div>
+            <input type="hidden" id="volume" name="volume" />
+            <div class="msg" style="margin-top:8px;">Please pick your order volume.</div>
+          </div>
+          <div class="fld" id="secFld">
+            <label>What product sectors do you sell in? <span style="font-weight:500;color:var(--ink-soft);">(select all that apply)</span></label>
+            <div class="chips sector-chips" id="secChips">
+              <span class="chip" data-v="Beauty &amp; Cosmetics">Beauty &amp; Cosmetics</span>
+              <span class="chip" data-v="Health &amp; Supplements">Health &amp; Supplements</span>
+              <span class="chip" data-v="Pet &amp; Animal Supplies">Pet &amp; Animal Supplies</span>
+              <span class="chip" data-v="Fashion &amp; Apparel">Fashion &amp; Apparel</span>
+              <span class="chip" data-v="Electronics">Electronics</span>
+              <span class="chip" data-v="Food &amp; Drink">Food &amp; Drink</span>
+              <span class="chip" data-v="Stationery &amp; Gifts">Stationery &amp; Gifts</span>
+              <span class="chip" data-v="Luxury Goods">Luxury Goods</span>
+              <span class="chip" data-v="Music &amp; Media">Music &amp; Media</span>
+              <span class="chip" data-v="Books">Books</span>
+              <span class="chip" data-v="Subscription Boxes">Subscription Boxes</span>
+              <span class="chip" data-v="Other">Other</span>
+            </div>
+            <input type="hidden" id="sectors" name="sectors" />
+            <div class="msg" style="margin-top:8px;">Please select at least one sector.</div>
+          </div>
+          <button type="submit" class="btn btn-grad form-submit">Get my pricing <span class="arr">→</span></button>
+          <p class="form-error" id="formError" hidden style="color:#E11367;font-size:13.5px;text-align:center;margin-top:14px;">Sorry — something went wrong sending that. Please try again, or email <a href="mailto:sales@pulsefulfilment.co.uk" style="color:#E11367;font-weight:600;">sales@pulsefulfilment.co.uk</a> or call 0151 329 3803.</p>
+          <p class="muted" style="font-size:12.5px; text-align:center; margin-top:14px;">We'll only use these details to prepare your quote and arrange your meeting.</p>
+        </form>
+      </div>
+      <div class="success" id="success">
+        <div class="tick">✓</div>
+        <h2 class="h-md">Thanks — your details are in!</h2>
+        <p class="muted" style="max-width:40ch;margin:12px auto 0;">We're preparing your bespoke quote. The next step is a quick meeting to walk you through it — grab a time that suits you and we'll have your pricing ready.</p>
+        <a href="/contact" class="btn btn-grad" style="margin-top:24px;">Book your meeting <span class="arr">→</span></a>
+        <div style="margin-top:14px;"><a href="/" class="muted" style="font-size:13px;">Back to home</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap-wide">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="/" style="margin-bottom:16px;"><img class="logo-mark-img" src="../assets/logo-mark.png" alt="" width="40" height="40" /><span class="logo-word" style="color:#fff;">PULSE<small style="color:#9aa0d8;">FULFILMENT</small></span></a>
+        <p style="color:#9aa0d8;font-size:14px;max-width:30ch;">Order fulfilment &amp; 3PL built for growing ecommerce brands. We grow when you grow.</p>
+        <p style="color:#9aa0d8;font-size:14px;margin-top:14px;">Unit 3–4 Ocean Park, Dock Road,<br/>Wallasey, CH41 1HW<br/>Tel: <a href="tel:01513293803">0151 329 3803</a><br/><a href="mailto:sales@pulsefulfilment.co.uk" style="color:inherit;">sales@pulsefulfilment.co.uk</a></p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="/services">Services</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/sectors">Sectors</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/contact">Book a call</a></li><li><a href="/news">News</a></li><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy Policy</a></li></ul></div>
+      <div><h4>Plans</h4><ul><li><a href="/pricing">Bronze · 300/mo</a></li><li><a href="/pricing">Silver · 750/mo</a></li><li><a href="/pricing">Gold · 2,000/mo</a></li><li><a href="/pricing">Platinum · 5,000+/mo</a></li></ul></div>
+    </div>
+    <div class="footer-locations">
+      <h4>Fulfilment locations</h4>
+      <ul class="footer-loc-links">
+        <li><a href="/locations/london">Fulfilment in London</a></li>
+        <li><a href="/locations/manchester">Fulfilment in Manchester</a></li>
+        <li><a href="/locations/birmingham">Fulfilment in Birmingham</a></li>
+        <li><a href="/locations/leeds">Fulfilment in Leeds</a></li>
+        <li><a href="/locations/glasgow">Fulfilment in Glasgow</a></li>
+        <li><a href="/locations/liverpool">Fulfilment in Liverpool</a></li>
+        <li><a href="/locations/newcastle">Fulfilment in Newcastle</a></li>
+        <li><a href="/locations/nottingham">Fulfilment in Nottingham</a></li>
+        <li><a href="/locations/sheffield">Fulfilment in Sheffield</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Pulse Fulfilment Limited. All rights reserved.</span><span>Wallasey, United Kingdom 🇬🇧</span></div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script>
+(function(){
+  // Plan from ?plan=Bronze etc.
+  const PLAN_VOL = { Bronze:'Under 300', Silver:'300–750', Gold:'750–2,000', Platinum:'5,000+' };
+  const params = new URLSearchParams(location.search);
+  const plan = (params.get('plan') || '').trim();
+  const planInput = document.getElementById('plan');
+  const volInput = document.getElementById('volume');
+  if (plan && PLAN_VOL[plan]) {
+    planInput.value = plan;
+    const pill = document.getElementById('planPill');
+    document.getElementById('planPillText').textContent = plan + ' plan enquiry';
+    pill.hidden = false;
+    // pre-select the matching order volume
+    const match = [...document.querySelectorAll('#volChips .chip')].find(c => c.dataset.v === PLAN_VOL[plan]);
+    if (match) { match.classList.add('on'); volInput.value = match.dataset.v; }
+  }
+
+  // single-select chips (volume)
+  const volChips = document.getElementById('volChips');
+  volChips.addEventListener('click', e => {
+    const c = e.target.closest('.chip'); if (!c) return;
+    volChips.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on'); volInput.value = c.dataset.v;
+    document.getElementById('volFld').classList.remove('err');
+  });
+
+  // multi-select chips (sectors)
+  const secChips = document.getElementById('secChips');
+  const secInput = document.getElementById('sectors');
+  const syncSectors = () => {
+    const on = [...secChips.querySelectorAll('.chip.on')].map(c => c.dataset.v);
+    secInput.value = on.join(', ');
+    if (on.length) document.getElementById('secFld').classList.remove('err');
+  };
+  secChips.addEventListener('click', e => {
+    const c = e.target.closest('.chip'); if (!c) return;
+    c.classList.toggle('on'); syncSectors();
+  });
+
+  const form = document.getElementById('priceForm');
+  const setErr = (id, on) => document.getElementById(id).closest('.fld').classList.toggle('err', on);
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name'), company = document.getElementById('company'),
+          email = document.getElementById('email'), phone = document.getElementById('phone');
+    let ok = true;
+    if (!name.value.trim()) { setErr('name', true); ok = false; } else setErr('name', false);
+    if (!company.value.trim()) { setErr('company', true); ok = false; } else setErr('company', false);
+    const emv = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim());
+    if (!emv) { setErr('email', true); ok = false; } else setErr('email', false);
+    if (!phone.value.trim()) { setErr('phone', true); ok = false; } else setErr('phone', false);
+    if (!volInput.value) { document.getElementById('volFld').classList.add('err'); ok = false; }
+    if (!secInput.value) { document.getElementById('secFld').classList.add('err'); ok = false; }
+    if (!ok) { const f = form.querySelector('.fld.err input'); if (f) f.focus(); return; }
+
+    // Honeypot — if a bot filled the hidden field, fake success silently.
+    if (document.getElementById('website').value) {
+      document.getElementById('formFields').classList.add('hide');
+      document.getElementById('success').classList.add('show');
+      return;
+    }
+
+    const payload = {
+      plan: planInput.value || '(none selected)',
+      name: name.value.trim(), company: company.value.trim(),
+      email: email.value.trim(), phone: phone.value.trim(),
+      volume: volInput.value, sectors: secInput.value
+    };
+
+    const btn = form.querySelector('.form-submit');
+    const errEl = document.getElementById('formError');
+    errEl.hidden = true;
+    btn.disabled = true;
+    const original = btn.innerHTML;
+    btn.innerHTML = 'Sending…';
+
+    window.pulseSubmitForm({
+      subject: 'New pricing enquiry — ' + payload.company,
+      'Plan of interest': payload.plan,
+      'Name': payload.name,
+      'Business': payload.company,
+      'Email': payload.email,
+      'Phone': payload.phone,
+      'Monthly order volume': payload.volume,
+      'Product sectors': payload.sectors,
+      replyto: payload.email
+    }).then(function (res) {
+      if (res && (res.success || res.skipped)) {
+        document.getElementById('formFields').classList.add('hide');
+        document.getElementById('success').classList.add('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('submit failed');
+      }
+    }).catch(function () {
+      btn.disabled = false;
+      btn.innerHTML = original;
+      errEl.hidden = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>

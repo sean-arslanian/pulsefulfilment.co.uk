@@ -1,0 +1,119 @@
+# Pulse Fulfilment — pulsefulfilment.co.uk (Ionos / Apache)
+DirectoryIndex index.html
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 1. One canonical host: https + non-www
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://pulsefulfilment.co.uk%{REQUEST_URI} [R=301,L,NE]
+
+# 2. Block old WordPress entry points (410 Gone)
+RewriteRule ^(wp-admin|wp-login\.php|wp-json|xmlrpc\.php|wp-includes|feed)(/|$) - [G,L]
+
+# 3. Old WordPress URL -> new page (exact, trailing slash optional)
+RewriteRule ^contact\-us/?$ /contact [R=301,L]
+RewriteRule ^privacy\-policy/?$ /privacy [R=301,L]
+RewriteRule ^ecommerce\-fulfilment/?$ /services [R=301,L]
+RewriteRule ^returns\-managment/?$ /services [R=301,L]
+RewriteRule ^thank\-you/?$ /contact [R=301,L]
+RewriteRule ^value\-added\-services/?$ /services [R=301,L]
+RewriteRule ^platinum/?$ /pricing [R=301,L]
+RewriteRule ^gold/?$ /pricing [R=301,L]
+RewriteRule ^silver/?$ /pricing [R=301,L]
+RewriteRule ^bronze/?$ /pricing [R=301,L]
+RewriteRule ^beauty\-cosmetics\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^health\-supplements\-fufilment/?$ /sectors [R=301,L]
+RewriteRule ^pet\-animal\-supplies\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^fashion\-apparel\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^electronics\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^food\-drink\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^stationery\-gifts\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^luxury\-goods\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^music\-media\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^book\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^subscription\-box\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^sporting\-goods\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^subscription\-boxe\-fulfilment/?$ /sectors [R=301,L]
+RewriteRule ^ecommerce\-fulfilment\-liverpool/?$ /locations/liverpool [R=301,L]
+RewriteRule ^amazon/?$ /integrations/amazon-fbm [R=301,L]
+RewriteRule ^api/?$ /integrations/custom-api [R=301,L]
+RewriteRule ^argos/?$ /integrations/argos [R=301,L]
+RewriteRule ^bandcamp/?$ /integrations/bandcamp [R=301,L]
+RewriteRule ^big\-commerce/?$ /integrations/bigcommerce [R=301,L]
+RewriteRule ^blue\-park/?$ /integrations/bluepark [R=301,L]
+RewriteRule ^bright\-pearl/?$ /integrations/brightpearl [R=301,L]
+RewriteRule ^channel\-advisor/?$ /integrations/channeladvisor [R=301,L]
+RewriteRule ^cs\-cart/?$ /integrations/cs-cart [R=301,L]
+RewriteRule ^dear\-systems/?$ /integrations/dear-systems [R=301,L]
+RewriteRule ^ebay\-fulfilment/?$ /integrations/ebay [R=301,L]
+RewriteRule ^ecwid/?$ /integrations/ecwid [R=301,L]
+RewriteRule ^ekm\-power\-shop/?$ /integrations/ekm-powershop [R=301,L]
+RewriteRule ^fruugo/?$ /integrations/fruugo [R=301,L]
+RewriteRule ^ftp\-import\-export/?$ /integrations/ftp [R=301,L]
+RewriteRule ^groupon/?$ /integrations/groupon [R=301,L]
+RewriteRule ^lightspeed/?$ /integrations/lightspeed [R=301,L]
+RewriteRule ^magento/?$ /integrations/magento [R=301,L]
+RewriteRule ^mirkal/?$ /integrations/mirakl [R=301,L]
+RewriteRule ^not\-on\-the\-high\-street/?$ /integrations/not-on-the-high-street [R=301,L]
+RewriteRule ^oracle\-netsuite/?$ /integrations/netsuite [R=301,L]
+RewriteRule ^shopify/?$ /integrations/shopify [R=301,L]
+RewriteRule ^shopwired/?$ /integrations/shopwired [R=301,L]
+RewriteRule ^squarespace/?$ /integrations/squarespace [R=301,L]
+RewriteRule ^the\-range\-market\-place/?$ /integrations/the-range [R=301,L]
+RewriteRule ^tiktok\-shop/?$ /integrations/tiktok-shop [R=301,L]
+RewriteRule ^veeqo/?$ /integrations/veeqo [R=301,L]
+RewriteRule ^wayfair/?$ /integrations/wayfair [R=301,L]
+RewriteRule ^wish/?$ /integrations/wish [R=301,L]
+RewriteRule ^woo\-commerce/?$ /integrations/woocommerce [R=301,L]
+RewriteRule ^wowcher/?$ /integrations/wowcher [R=301,L]
+RewriteRule ^zendesk/?$ /integrations/zendesk [R=301,L]
+RewriteRule ^3dcart/?$ /integrations [R=301,L]
+RewriteRule ^apc\-overnight/?$ /integrations [R=301,L]
+RewriteRule ^blue\-jay\-solutions/?$ /integrations [R=301,L]
+RewriteRule ^channel\-engine/?$ /integrations [R=301,L]
+RewriteRule ^dhl\-parcel/?$ /integrations [R=301,L]
+RewriteRule ^fedex/?$ /integrations [R=301,L]
+RewriteRule ^inventory\-planner/?$ /integrations [R=301,L]
+RewriteRule ^royal\-mail/?$ /integrations [R=301,L]
+RewriteRule ^sap\-business\-by\-design/?$ /integrations [R=301,L]
+RewriteRule ^store\-feeder/?$ /integrations [R=301,L]
+RewriteRule ^the\-pallet\-network/?$ /integrations [R=301,L]
+RewriteRule ^virtual\-stock/?$ /integrations [R=301,L]
+RewriteRule ^volo/?$ /integrations [R=301,L]
+RewriteRule ^volusion/?$ /integrations [R=301,L]
+RewriteRule ^weebly/?$ /integrations [R=301,L]
+RewriteRule ^yumbles/?$ /integrations [R=301,L]
+RewriteRule ^zedonk/?$ /integrations [R=301,L]
+RewriteRule ^2025/03/05/3pl\-services\-guide\-benefits\-types\-how\-to\-choose/?$ /blog/how-to-choose-a-3pl [R=301,L]
+RewriteRule ^category/uncategorised/?$ /blog [R=301,L]
+
+# 4. WordPress archives
+RewriteRule ^[0-9]{4}/[0-9]{2}/[0-9]{2}/3pl-services-guide-benefits-types-how-to-choose/?$ /blog/how-to-choose-a-3pl [R=301,L]
+RewriteRule ^[0-9]{4}/[0-9]{2}(/.*)?$ /blog [R=301,L]
+RewriteRule ^(category|tag|author)(/.*)?$ /blog [R=301,L]
+RewriteRule ^wp-content/uploads/.* / [R=301,L]
+
+# 5. Strip trailing slash on any remaining path (not real folders)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType text/html "access plus 0 seconds"
+</IfModule>

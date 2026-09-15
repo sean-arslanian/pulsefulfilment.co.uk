@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pricing — Pulse Fulfilment | Plans for Every Stage</title>
+<meta name="description" content="Transparent, volume-based fulfilment pricing — Bronze to Platinum plans from 300 to 5,000+ orders a month. Get a quote." />
+<link rel="canonical" href="https://pulsefulfilment.co.uk/pricing" />
+<meta property="og:url" content="https://pulsefulfilment.co.uk/pricing" />
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" type="image/png" href="../assets/logo-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="../assets/styles.css" />
+<style>
+.page-hero { padding-block: clamp(48px,7vw,96px) clamp(30px,4vw,52px); text-align:center; position:relative; overflow:hidden; }
+.page-hero .blob { position:absolute; width:420px;height:420px;border-radius:50%;filter:blur(72px);opacity:.45;background:radial-gradient(circle,#FFD9E8,transparent 70%); top:-140px; left:50%; transform:translateX(-50%); pointer-events:none; }
+.page-hero h1 { font-size: clamp(2.4rem,5.4vw,4.2rem); position:relative; }
+.page-hero .lead { max-width: 52ch; margin: 18px auto 0; position:relative; }
+
+/* Calculator */
+.calc { background: var(--ink); color:#fff; border-radius: var(--r-xl); padding: clamp(26px,4vw,46px); box-shadow: var(--shadow-lg); position:relative; overflow:hidden; }
+.calc::after { content:""; position:absolute; inset:0; background:radial-gradient(120% 90% at 85% -10%, rgba(255,46,126,.3), transparent 55%); pointer-events:none; }
+.calc-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px,4vw,56px); align-items:center; position:relative; z-index:2; }
+.calc h2 { font-size: clamp(1.5rem,2.6vw,2.1rem); }
+.calc .sub { color:#B9BEEC; margin-top:8px; }
+.calc-out { display:flex; align-items:baseline; gap:8px; margin: 22px 0 4px; }
+.calc-out .big { font-family:var(--display); font-weight:700; font-size: clamp(2.6rem,5vw,3.6rem); line-height:1; }
+.calc-out .unit { color:#9aa0d8; font-size:15px; }
+.slider-wrap { margin-top: 28px; }
+.slider-labels { display:flex; justify-content:space-between; font-size:12px; color:#9aa0d8; margin-top:12px; font-family:var(--display); }
+input[type=range].rng { -webkit-appearance:none; appearance:none; width:100%; height:8px; border-radius:100px; background:rgba(255,255,255,.14); outline:none; }
+input[type=range].rng::-webkit-slider-thumb { -webkit-appearance:none; width:26px;height:26px;border-radius:50%; background:var(--grad); cursor:pointer; box-shadow:0 4px 14px -2px rgba(225,19,103,.8); border:3px solid #fff; }
+input[type=range].rng::-moz-range-thumb { width:26px;height:26px;border-radius:50%; background:#FF2E7E; cursor:pointer; border:3px solid #fff; }
+.calc-card { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:var(--r-lg); padding:24px; }
+.calc-card .badge { display:inline-flex; align-items:center; gap:8px; font-family:var(--display); font-weight:600; font-size:12px; letter-spacing:.12em; text-transform:uppercase; padding:6px 13px; border-radius:100px; background:var(--grad); }
+.calc-card .plan-name { font-family:var(--display); font-weight:700; font-size:1.8rem; margin:14px 0 4px; }
+.calc-card ul { list-style:none; margin:16px 0 0; padding:0; display:grid; gap:10px; font-size:14px; color:#D6D9F5; }
+.calc-card ul li { display:flex; gap:10px; align-items:flex-start; }
+.calc-card ul li::before { content:"✓"; color:#54E39B; font-weight:700; }
+.est { margin-top:16px; font-size:13px; color:#9aa0d8; }
+
+/* Tier cards */
+.tiers { display:grid; grid-template-columns: repeat(4,1fr); gap:18px; margin-top:48px; align-items:start; }
+.tier { background:var(--white); border:1px solid var(--line); border-radius:var(--r-lg); padding:28px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s; position:relative; }
+.tier:hover { transform:translateY(-6px); box-shadow:var(--shadow); }
+.tier.featured { border-color:transparent; box-shadow:var(--shadow); }
+.tier.featured::before { content:"Most popular"; position:absolute; top:-12px; left:24px; background:var(--grad); color:#fff; font-family:var(--display); font-weight:600; font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:6px 12px; border-radius:100px; }
+.tier.active-tier { outline:2px solid var(--pink); outline-offset:3px; }
+.tier .medal { width:46px;height:46px;border-radius:13px; display:grid;place-items:center; font-family:var(--display);font-weight:700;color:#fff;font-size:18px; }
+.tier .medal-ic { width:58px; height:auto; display:block; margin-bottom:2px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.16)); }
+.tier h3 { font-size:1.4rem; margin:16px 0 2px; }
+.tier .vol { color:var(--ink-soft); font-size:14px; }
+.tier .price { font-family:var(--display); font-weight:700; font-size:2rem; margin:18px 0 2px; }
+.blurprice { filter: blur(7px); -webkit-user-select:none; user-select:none; pointer-events:none; }
+.tier .price small.cta-reveal { display:block; filter:none; font-weight:600; font-size:12px; color:var(--pink-deep); letter-spacing:.02em; margin-top:6px; }
+.tier .price small { font-size:13px; color:var(--ink-soft); font-weight:500; }
+.tier ul { list-style:none; margin:18px 0 22px; padding:0; display:grid; gap:11px; font-size:14px; }
+.tier ul li { display:flex; gap:10px; align-items:flex-start; color:var(--ink-soft); }
+.tier ul li::before { content:"✓"; color:var(--pink-deep); font-weight:700; }
+.tier .btn { width:100%; justify-content:center; }
+
+.feat-table { width:100%; border-collapse:collapse; margin-top:40px; font-size:15px; background:var(--white); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; }
+.feat-table th, .feat-table td { padding:16px 20px; text-align:left; border-bottom:1px solid var(--line); }
+.feat-table th { font-family:var(--display); font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); background:var(--paper-2); }
+.feat-table td.c { text-align:center; }
+.feat-table tr:last-child td { border-bottom:0; }
+.tick { color:#16A34A; font-weight:700; } .dash { color:var(--ink-soft); }
+
+@media (max-width: 980px){ .calc-grid{ grid-template-columns:1fr; } .tiers{ grid-template-columns:1fr 1fr; } }
+@media (max-width: 620px){ .tiers{ grid-template-columns:1fr; } .feat-table{ display:block; overflow-x:auto; white-space:nowrap; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap-wide nav">
+    <a class="logo" href="/" aria-label="Pulse Fulfilment home"><img class="logo-img" src="../assets/logo.png" alt="Pulse Fulfilment" width="172" height="86" /></a>
+    <nav><ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/pricing" class="active">Pricing</a></li>
+      <li><a href="/integrations">Integrations</a></li>
+      <li><a href="/sectors">Sectors</a></li><li><a href="/about">About</a></li>
+    </ul></nav>
+    <div class="nav-cta">
+      <a href="/contact" class="btn btn-grad">Book a call <span class="arr">→</span></a>
+      <button class="nav-toggle btn btn-ghost" aria-label="Open menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<div class="mobile-drawer">
+  <a href="/">Home</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/integrations">Integrations</a><a href="/sectors">Sectors</a><a href="/about">About</a>
+  <a href="/contact" class="btn btn-grad">Book a call →</a>
+</div>
+
+<section class="page-hero">
+  <span class="blob"></span>
+  <div class="wrap">
+    <span class="eyebrow center reveal">Pricing</span>
+    <h1 class="reveal d1" style="margin-top:14px;">Pricing that <span class="grad-text">scales with you</span></h1>
+    <p class="lead reveal d2">Volume-based plans with no hidden surprises. Slide to your monthly order volume, see the plan that fits, then get an exact bespoke quote built around your products.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section style="padding-bottom:clamp(40px,6vw,70px);">
+  <div class="wrap">
+    <div class="calc reveal">
+      <div class="calc-grid">
+        <div>
+          <h2>How many orders do you ship a month?</h2>
+          <p class="sub">Drag the slider — we'll match you to a plan and give an indicative cost.</p>
+          <div class="calc-out">
+            <span class="big" id="volOut">750</span>
+            <span class="unit">orders / month</span>
+          </div>
+          <div class="slider-wrap">
+            <input class="rng" type="range" id="vol" min="50" max="8000" step="50" value="750" aria-label="Monthly orders" />
+            <div class="slider-labels"><span>50</span><span>2,000</span><span>4,000</span><span>6,000</span><span>8,000+</span></div>
+          </div>
+          <p class="est" id="estLine">Indicative pick &amp; pack from <b id="ppOut" class="blurprice" style="color:#fff;">£1.35</b> / order · storage &amp; postage charged at cost. <b style="color:#fff;">Book a call for your exact rate.</b></p>
+        </div>
+        <div class="calc-card">
+          <span class="badge" id="recBadge">Recommended</span>
+          <div class="plan-name" id="recName">Silver</div>
+          <div class="sub" id="recVol">Best for 300–750 orders / month</div>
+          <ul id="recFeats">
+            <li>Same-day dispatch (orders before 2pm)</li>
+            <li>Smart carrier selection across 14+ carriers</li>
+            <li>Dedicated customer support team</li>
+            <li>Branded &amp; eco packaging options</li>
+          </ul>
+          <a href="/contact" class="btn btn-grad" style="margin-top:22px; width:100%; justify-content:center;">Get a bespoke quote <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section style="padding-bottom:clamp(50px,7vw,90px);">
+  <div class="wrap-wide">
+    <div class="tiers">
+      <div class="tier reveal" data-tier="Bronze" data-min="0" data-max="300">
+        <img class="medal-ic" src="../uploads/pulse_bronze_icon.png" alt="Bronze tier" />
+        <h3>Bronze</h3>
+        <div class="vol">Up to 300 orders / month</div>
+        <div class="price"><span class="blurprice">£1.65</span> <small>/ order from</small><small class="cta-reveal">Book a call to reveal</small></div>
+        <ul>
+          <li>Same-day dispatch before 2pm</li>
+          <li>Smart carrier selection</li>
+          <li>Standard packaging</li>
+          <li>Email support</li>
+        </ul>
+        <a href="/get-pricing?plan=Bronze" class="btn btn-ghost">Get Bronze pricing</a>
+      </div>
+      <div class="tier reveal d1" data-tier="Silver" data-min="301" data-max="750">
+        <img class="medal-ic" src="../uploads/pulse_silver_icon.png" alt="Silver tier" />
+        <h3>Silver</h3>
+        <div class="vol">Up to 750 orders / month</div>
+        <div class="price"><span class="blurprice">£1.45</span> <small>/ order from</small><small class="cta-reveal">Book a call to reveal</small></div>
+        <ul>
+          <li>Everything in Bronze</li>
+          <li>Dedicated customer support team</li>
+          <li>Branded &amp; eco packaging</li>
+          <li>Returns management</li>
+        </ul>
+        <a href="/get-pricing?plan=Silver" class="btn btn-ghost">Get Silver pricing</a>
+      </div>
+      <div class="tier featured reveal d2" data-tier="Gold" data-min="751" data-max="2000">
+        <img class="medal-ic" src="../uploads/pulse_gold_icon.png" alt="Gold tier" />
+        <h3>Gold</h3>
+        <div class="vol">Up to 2,000 orders / month</div>
+        <div class="price"><span class="blurprice">£1.25</span> <small>/ order from</small><small class="cta-reveal">Book a call to reveal</small></div>
+        <ul>
+          <li>Everything in Silver</li>
+          <li>Seller-fulfilled Prime (3:30pm)</li>
+          <li>Priority pick &amp; pack lane</li>
+          <li>Custom packaging &amp; inserts</li>
+        </ul>
+        <a href="/get-pricing?plan=Gold" class="btn btn-grad">Get Gold pricing</a>
+      </div>
+      <div class="tier reveal d3" data-tier="Platinum" data-min="2001" data-max="100000">
+        <img class="medal-ic" src="../uploads/pulse_platinum_icon.png" alt="Platinum tier" />
+        <h3>Platinum</h3>
+        <div class="vol">5,000+ orders / month</div>
+        <div class="price"><span class="blurprice">Bespoke</span> <small>volume rate</small><small class="cta-reveal">Book a call to reveal</small></div>
+        <ul>
+          <li>Everything in Gold</li>
+          <li>Dedicated customer support team</li>
+          <li>Custom SLAs &amp; reporting</li>
+          <li>Multi-channel &amp; international</li>
+        </ul>
+        <a href="/get-pricing?plan=Platinum" class="btn btn-ghost">Get Platinum pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE TABLE -->
+<section class="section-pad" style="background:var(--paper-2); padding-top:clamp(48px,6vw,80px);">
+  <div class="wrap">
+    <div class="center" style="max-width:580px;margin-inline:auto;">
+      <span class="eyebrow center reveal">Compare plans</span>
+      <h2 class="h-lg reveal d1" style="margin-top:14px;">What's included</h2>
+    </div>
+    <table class="feat-table reveal d1">
+      <thead><tr><th>Feature</th><th class="c">Bronze</th><th class="c">Silver</th><th class="c">Gold</th><th class="c">Platinum</th></tr></thead>
+      <tbody>
+        <tr><td>Same-day dispatch (before 2pm)</td><td class="c tick">✓</td><td class="c tick">✓</td><td class="c tick">✓</td><td class="c tick">✓</td></tr>
+        <tr><td>Smart carrier selection (14+ carriers)</td><td class="c tick">✓</td><td class="c tick">✓</td><td class="c tick">✓</td><td class="c tick">✓</td></tr>
+        <tr><td>Dedicated customer support team</td><td class="c dash">—</td><td class="c tick">✓</td><td class="c tick">✓</td><td class="c tick">✓</td></tr>
+        <tr><td>Branded &amp; eco packaging</td><td class="c dash">—</td><td class="c tick">✓</td><td class="c tick">✓</td><td class="c tick">✓</td></tr>
+        <tr><td>Seller-fulfilled Prime (3:30pm)</td><td class="c dash">—</td><td class="c dash">—</td><td class="c tick">✓</td><td class="c tick">✓</td></tr>
+        <tr><td>Custom packaging &amp; inserts</td><td class="c dash">—</td><td class="c dash">—</td><td class="c tick">✓</td><td class="c tick">✓</td></tr>
+        <tr><td>Custom SLAs &amp; reporting</td><td class="c dash">—</td><td class="c dash">—</td><td class="c dash">—</td><td class="c tick">✓</td></tr>
+      </tbody>
+    </table>
+    <p class="muted center" style="margin-top:22px; font-size:14px;">Per-order pricing depends on product size, weight and service mix — so we keep it bespoke. <a href="/contact" style="color:var(--pink-deep);font-weight:600;">Book a call for your exact quote →</a></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="reveal" style="position:relative;overflow:hidden;background:var(--grad);color:#fff;border-radius:var(--r-xl);padding:clamp(40px,6vw,76px);text-align:center;">
+      <svg style="position:absolute;inset:0;opacity:.22;" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0 150 H300 L340 150 L370 60 L405 240 L440 150 H700 L740 150 L770 70 L805 230 L840 150 H1200" stroke="#fff" stroke-width="2.5" fill="none"/></svg>
+      <div style="position:relative;z-index:2;">
+        <h2 style="font-size:clamp(2rem,4.4vw,3.2rem);">Let's build your exact quote</h2>
+        <p style="color:rgba(255,255,255,.92);max-width:46ch;margin:16px auto 30px;">Tell us your products, channels and volume — we'll send transparent pricing within one working day.</p>
+        <a href="/contact" class="btn btn-light">Book a call <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap-wide">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="/" style="margin-bottom:16px;"><img class="logo-mark-img" src="../assets/logo-mark.png" alt="" width="40" height="40" /><span class="logo-word" style="color:#fff;">PULSE<small style="color:#9aa0d8;">FULFILMENT</small></span></a>
+        <p style="color:#9aa0d8;font-size:14px;max-width:30ch;">Order fulfilment &amp; 3PL built for growing ecommerce brands. We grow when you grow.</p>
+        <p style="color:#9aa0d8;font-size:14px;margin-top:14px;">Unit 3–4 Ocean Park, Dock Road,<br/>Wallasey, CH41 1HW<br/>Tel: <a href="tel:01513293803">0151 329 3803</a><br/><a href="mailto:sales@pulsefulfilment.co.uk" style="color:inherit;">sales@pulsefulfilment.co.uk</a></p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="/services">Services</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/sectors">Sectors</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/contact">Book a call</a></li><li><a href="/news">News</a></li><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy Policy</a></li></ul></div>
+      <div><h4>Plans</h4><ul><li><a href="/pricing">Bronze · 300/mo</a></li><li><a href="/pricing">Silver · 750/mo</a></li><li><a href="/pricing">Gold · 2,000/mo</a></li><li><a href="/pricing">Platinum · 5,000+/mo</a></li></ul></div>
+    </div>
+    <div class="footer-locations">
+      <h4>Fulfilment locations</h4>
+      <ul class="footer-loc-links">
+        <li><a href="/locations/london">Fulfilment in London</a></li>
+        <li><a href="/locations/manchester">Fulfilment in Manchester</a></li>
+        <li><a href="/locations/birmingham">Fulfilment in Birmingham</a></li>
+        <li><a href="/locations/leeds">Fulfilment in Leeds</a></li>
+        <li><a href="/locations/glasgow">Fulfilment in Glasgow</a></li>
+        <li><a href="/locations/liverpool">Fulfilment in Liverpool</a></li>
+        <li><a href="/locations/newcastle">Fulfilment in Newcastle</a></li>
+        <li><a href="/locations/nottingham">Fulfilment in Nottingham</a></li>
+        <li><a href="/locations/sheffield">Fulfilment in Sheffield</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Pulse Fulfilment Limited. All rights reserved.</span><span>Wallasey, United Kingdom 🇬🇧</span></div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script>
+(function(){
+  const vol = document.getElementById('vol');
+  const volOut = document.getElementById('volOut');
+  const ppOut = document.getElementById('ppOut');
+  const recName = document.getElementById('recName');
+  const recVol = document.getElementById('recVol');
+  const recFeats = document.getElementById('recFeats');
+  const tiers = [...document.querySelectorAll('.tier')];
+  const plans = {
+    Bronze:  { vol:'Up to 300 orders / month', pp:1.65, feats:['Same-day dispatch (orders before 2pm)','Smart carrier selection across 14+ carriers','Standard packaging','Email support'] },
+    Silver:  { vol:'301–750 orders / month', pp:1.45, feats:['Same-day dispatch (orders before 2pm)','Smart carrier selection across 14+ carriers','Dedicated customer support team','Branded & eco packaging options'] },
+    Gold:    { vol:'751–2,000 orders / month', pp:1.25, feats:['Seller-fulfilled Prime (3:30pm)','Priority pick & pack lane','Custom packaging & inserts','Returns management'] },
+    Platinum:{ vol:'2,000+ orders / month', pp:1.05, feats:['Dedicated customer support team','Custom SLAs & reporting','Multi-channel & international','Bespoke volume rate'] }
+  };
+  function pick(n){
+    if(n<=300) return 'Bronze';
+    if(n<=750) return 'Silver';
+    if(n<=2000) return 'Gold';
+    return 'Platinum';
+  }
+  function update(){
+    const n = +vol.value;
+    volOut.textContent = n.toLocaleString('en-GB') + (n>=8000?'+':'');
+    const key = pick(n);
+    const p = plans[key];
+    ppOut.textContent = '£' + p.pp.toFixed(2);
+    recName.textContent = key;
+    recVol.textContent = 'Best for ' + p.vol;
+    recFeats.innerHTML = p.feats.map(f=>'<li>'+f+'</li>').join('');
+    tiers.forEach(t=> t.classList.toggle('active-tier', t.dataset.tier===key));
+  }
+  vol.addEventListener('input', update);
+  update();
+})();
+</script>
+</body>
+</html>
