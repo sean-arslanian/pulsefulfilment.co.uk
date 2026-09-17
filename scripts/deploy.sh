@@ -14,7 +14,8 @@
 # Optional:
 #   SFTP_PORT        default 22
 #   DEPLOY_TARGET    production (default) or staging. Staging gets a
-#                    Disallow-all robots.txt and an X-Robots-Tag noindex header.
+#                    Disallow-all robots.txt, an X-Robots-Tag noindex header,
+#                    and no https/non-www canonical redirect.
 #   DRY_RUN          true = list what would change, upload and delete nothing
 #   DEPLOY_EXCLUDES  extra regexes (space separated) for paths to leave alone
 #   DEPLOY_VERSION   string written to deploy-version.txt (defaults to git sha)
@@ -49,6 +50,13 @@ printf '%s %s %s\n' "$VERSION" "$DEPLOY_TARGET" "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 if [ "$DEPLOY_TARGET" = "staging" ]; then
   printf 'User-agent: *\nDisallow: /\n' > "$BUILD/robots.txt"
+  # Drop the canonical-host redirect (rule 1) so staging is not bounced to
+  # the production domain; everything else in .htaccess stays as-is.
+  awk '
+    /^# 1\. One canonical host/ { skip=1 }
+    skip && /^RewriteRule \^ https:\/\/pulsefulfilment\.co\.uk/ { skip=0; print "# (canonical-host redirect removed for staging)"; next }
+    !skip
+  ' "$SRC/.htaccess" > "$BUILD/.htaccess"
   cat >> "$BUILD/.htaccess" <<'HT'
 
 # Staging only: keep search engines out
