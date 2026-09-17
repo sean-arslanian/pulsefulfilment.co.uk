@@ -16,6 +16,7 @@ Everything in `site/` is **production code, ready to upload as-is**. This is not
 | `docs/Website Cutover Plan.html` | Client-facing plan (summary, open decisions, cutover steps, rollback). Print to PDF. |
 | `docs/Migration Audit - couk to com.html` | Working audit with full reasoning |
 | `scripts/test-redirects.sh` | Curl every old URL against a host and check for 301 → 200 |
+| `scripts/deploy.sh`, `scripts/check-site.py`, `.github/workflows/deploy.yml` | GitHub → Ionos SFTP deployment, see `DEPLOY.md` |
 
 ## Site structure
 
@@ -47,15 +48,13 @@ Display/UI font: Space Grotesk · Body: Manrope · Editorial headlines: Newsread
 
 ## Deploy to Ionos
 
-1. Back up WordPress (files + DB) from the Ionos panel.
-2. Lower the .co.uk A-record TTL to 300s a day ahead. **Do not touch MX records.**
-3. Stage: SFTP `site/` into a subfolder or temp subdomain. Click through. Run `scripts/test-redirects.sh https://<staging-host>`.
-4. Cutover: rename the WordPress directory (keep it), move `site/` contents into the document root including `.htaccess`. Delete the old WordPress `.htaccess`.
-5. Confirm https loads, http and www redirect, /404 works, forms send.
-6. Search Console: submit https://pulsefulfilment.co.uk/sitemap.xml. Watch Pages report for 6 weeks.
-7. After 30 clean days: delete WordPress directory + DB, cancel plugin licences.
+Deployment is automated from GitHub over SFTP: pushes to `main` go to production, and
+the Actions tab can deploy any branch to staging or production by hand, with a dry-run
+option. Setup, cutover order and rollback are in [DEPLOY.md](DEPLOY.md).
 
-Rollback: rename directories back and restore the WordPress .htaccess.
+- `.github/workflows/deploy.yml` — the pipeline (check → deploy → smoke test)
+- `scripts/deploy.sh` — the SFTP mirror; also runs from a laptop
+- `scripts/check-site.py` — link, sitemap and redirect-target checks, run on every PR
 
 ## Open decisions (need the client)
 
@@ -66,7 +65,6 @@ Rollback: rename directories back and restore the WordPress .htaccess.
 ## Suggested next steps for Claude Code
 
 - Optional: introduce a minimal static build (Eleventy or a Node script) so header/footer/JSON-LD live in one partial. Output must remain `folder/index.html`.
-- Add a GitHub Action or script that runs `scripts/test-redirects.sh` against production after each deploy.
 - Consider self-hosting the three Google Fonts for performance/GDPR.
 - Integration logos in `site/uploads/` have inconsistent filenames (spaces, mixed case); rename and update references if you touch them.
 - The `.com` variant of this site (canonical URLs pointing at pulsefulfilment.com) was the original build; `site/` is the .co.uk version with 416 references swapped. If .com ever goes live too, it should 301 to .co.uk rather than serve a duplicate.

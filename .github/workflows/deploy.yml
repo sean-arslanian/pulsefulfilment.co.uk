@@ -1,0 +1,94 @@
+# Deploy site/ to the Ionos webspace over SFTP.
+#
+# - Every push and pull request runs the site checks (broken links, sitemap,
+#   redirect targets).
+# - A push to main deploys to the "production" environment.
+# - "Run workflow" (Actions tab) deploys to staging or production by hand,
+#   optionally as a dry run that only lists what would change.
+# - After a real deploy, the old WordPress URLs are curl-checked against
+#   the environment's SITE_URL.
+#
+# Environments, secrets and variables are described in DEPLOY.md.
+name: Deploy to Ionos
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Where to deploy
+        type: choice
+        options: [staging, production]
+        default: staging
+      dry_run:
+        description: Dry run (list changes, upload and delete nothing)
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('check-{0}', github.ref) || format('deploy-{0}', github.event_name == 'workflow_dispatch' && inputs.target || 'production') }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Check site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/check-site.py
+
+  deploy:
+    name: Deploy (${{ github.event_name == 'workflow_dispatch' && inputs.target || 'production' }})
+    needs: check
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event_name == 'workflow_dispatch' && inputs.target || 'production' }}
+    outputs:
+      site_url: ${{ steps.deploy.outputs.site_url }}
+      dry_run: ${{ steps.deploy.outputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Upload over SFTP
+        id: deploy
+        env:
+          SFTP_HOST: ${{ vars.SFTP_HOST }}
+          SFTP_PORT: ${{ vars.SFTP_PORT }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
+          REMOTE_PATH: ${{ vars.REMOTE_PATH }}
+          DEPLOY_EXCLUDES: ${{ vars.DEPLOY_EXCLUDES }}
+          DEPLOY_TARGET: ${{ github.event_name == 'workflow_dispatch' && inputs.target || 'production' }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          DEPLOY_VERSION: ${{ github.sha }}
+        run: |
+          scripts/deploy.sh
+          echo "site_url=${{ vars.SITE_URL }}" >> "$GITHUB_OUTPUT"
+          echo "dry_run=$DRY_RUN" >> "$GITHUB_OUTPUT"
+
+  smoke:
+    name: Smoke test
+    needs: deploy
+    if: needs.deploy.outputs.dry_run != 'true' && needs.deploy.outputs.site_url != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm the deployed version is live
+        env:
+          SITE_URL: ${{ needs.deploy.outputs.site_url }}
+        run: |
+          live="$(curl -sf "$SITE_URL/deploy-version.txt" || true)"
+          echo "live: $live"
+          case "$live" in
+            "${{ github.sha }} "*) echo "version matches" ;;
+            *) echo "deploy-version.txt does not show ${{ github.sha }}"; exit 1 ;;
+          esac
+      - name: Check old WordPress URLs redirect
+        env:
+          SITE_URL: ${{ needs.deploy.outputs.site_url }}
+        run: bash scripts/test-redirects.sh "$SITE_URL"
