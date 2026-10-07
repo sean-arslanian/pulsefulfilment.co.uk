@@ -30,3 +30,9 @@ jobs:
           echo
           echo "=== first 5 lines of $u/ ==="
           curl -sL --max-time 20 "$u/" | head -5 || true
+          echo "=== HEAD $u/sitemap.xml (as Googlebot) ==="
+          curl -sI --max-time 20 -A "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" "$u/sitemap.xml" || true
+          echo "=== first 6 lines of $u/sitemap.xml ==="
+          curl -sL --max-time 20 "$u/sitemap.xml" | head -6 || true
+          echo "=== HEAD http://www variant ==="
+          curl -sI --max-time 20 "http://www.${u#https://}/sitemap.xml" || true
