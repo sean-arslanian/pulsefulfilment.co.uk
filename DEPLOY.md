@@ -35,21 +35,24 @@ Note the host name (looks like `access-1234567890.webspace-host.com` or
 password. Port is 22. If your plan offers SSH keys you can use one instead of the
 password (see secrets below).
 
-### 2. Ionos: folders and domains
+### 2. Ionos: folders and domains (as set up on 7 Oct 2026)
 
-Recommended layout, so cutover and rollback are a single setting change:
+The deploy SFTP user is restricted to the `/Staging` folder of the webspace, so the
+deploy sees that folder as `/`. Both sites live inside it:
 
-| Folder in webspace | Serves |
-|---|---|
-| existing WordPress folder (often `/`) | the current site, untouched |
-| `/pulse-site` | production build of this repo |
-| `/pulse-staging` | staging build of this repo |
+| Real folder in the webspace | Seen by the deploy as | Serves |
+|---|---|---|
+| `/Staging` | `/` | **production**, `pulsefulfilment.co.uk` |
+| `/Staging/pulse-staging` | `/pulse-staging` | **staging**, `staging.pulsefulfilment.co.uk` |
+| the old WordPress folder | not visible | nothing (kept for rollback) |
 
-- **Domains & SSL → pulsefulfilment.co.uk → Adjust destination** shows which folder the
-  domain serves today. Leave it alone until cutover.
-- Create a subdomain, e.g. `staging.pulsefulfilment.co.uk`, point it at
-  `/pulse-staging` and enable SSL for it. Staging must be served over https,
-  because `.htaccess` redirects plain http to the production host.
+Domain destinations are set under **Domains & SSL → domain → Connect to webspace**.
+The production environment has `DEPLOY_EXCLUDES` = `^pulse-staging/` so a production
+deploy never deletes the staging site nested inside it.
+
+If you ever want staging out of the production folder: widen the SFTP user's directory
+to the webspace root, move `pulse-staging` up a level, and change both the subdomain's
+destination and the staging `REMOTE_PATH` to match.
 
 ### 3. GitHub: environments
 
@@ -62,14 +65,14 @@ Add to each environment:
 | Kind | Name | Value |
 |---|---|---|
 | Variable | `SFTP_HOST` | the host from step 1 |
-| Variable | `REMOTE_PATH` | `/pulse-site` for production, `/pulse-staging` for staging |
+| Variable | `REMOTE_PATH` | `/` for production, `/pulse-staging` for staging |
 | Variable | `SITE_URL` | `https://pulsefulfilment.co.uk` / `https://staging.pulsefulfilment.co.uk` (used by the smoke test; leave empty to skip it) |
 | Secret | `SFTP_USER` | the SFTP user |
 | Secret | `SFTP_PASSWORD` | the SFTP password |
 
+Production also needs variable `DEPLOY_EXCLUDES` = `^pulse-staging/` (see above).
 Optional: variable `SFTP_PORT` (default 22), secret `SFTP_PRIVATE_KEY` (PEM contents,
-used instead of the password), variable `DEPLOY_EXCLUDES` (extra space-separated
-regexes for remote paths to leave alone, e.g. `^old-site/ ^cgi-bin/`).
+used instead of the password).
 
 `REMOTE_PATH` is relative to what the SFTP user sees as its root. **Ionos lets you
 restrict an SFTP user to a folder**, and if you do, that folder becomes `/` for the
@@ -89,31 +92,23 @@ Two helper workflows in the Actions tab make this easy to check:
 The workflow deploys to production on pushes to `main`. Create `main` from the
 current branch and make it the default branch under **Settings → General**.
 
-## First deploy and cutover
+## Cutover status
 
-1. **Actions → Deploy to Ionos → Run workflow**, target `staging`, *Dry run* ticked.
-   Read the log: it lists every upload and deletion it would make. If it wants to
-   delete things you did not expect, `REMOTE_PATH` is pointing at the wrong folder.
-2. Run again for `staging` without dry run. Open the staging subdomain and click
-   through. The smoke test in the same run checks all the old URLs redirect.
-3. Run for `production` (dry run, then real). This fills `/pulse-site` while the
-   domain still serves WordPress, so nothing is live yet.
-4. Back up WordPress from the Ionos panel (files and database).
-5. **Cutover:** Domains & SSL → pulsefulfilment.co.uk → Adjust destination →
-   `/pulse-site`. Takes effect within a few minutes.
-6. Check https loads, http and www redirect, `/404` works, the contact form sends,
-   and run `scripts/test-redirects.sh https://pulsefulfilment.co.uk` once more.
-7. Search Console: submit `https://pulsefulfilment.co.uk/sitemap.xml`.
-8. After 30 clean days, delete the WordPress folder and database and cancel plugin
-   licences.
+Done on 7 Oct 2026: production build deployed, `https://pulsefulfilment.co.uk` serves
+it, all 80 old WordPress URLs verified redirecting. WordPress files remain in their own
+folder, untouched.
 
-**Rollback:** Adjust destination back to the WordPress folder. Nothing in it was
-changed.
+**Rollback:** Domains & SSL → `pulsefulfilment.co.uk` → Connect to webspace → pick the
+WordPress folder again.
 
-If you would rather deploy in place over the WordPress folder (`REMOTE_PATH` = the
-folder the domain already serves), move the WordPress files into `_wordpress_old/`
-first. That folder is on the exclude list, so the deploy leaves it alone, and rollback
-is moving the files back out.
+**Still to do after go-live:**
+
+1. Search Console: submit `https://pulsefulfilment.co.uk/sitemap.xml`; watch the Pages
+   report for 6 weeks.
+2. Send one test message through the contact form and click the Web3Forms confirmation
+   email it triggers the first time.
+3. Add analytics (GA4/GTM) to every page `<head>` if wanted.
+4. After 30 clean days: delete the WordPress folder and database, cancel plugin licences.
 
 ## Day to day
 
