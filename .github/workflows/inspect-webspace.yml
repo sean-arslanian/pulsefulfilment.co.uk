@@ -1,0 +1,47 @@
+# List what is in the Ionos webspace, using an environment's SFTP credentials.
+# Read-only. Useful for checking which folder a domain points at.
+name: Inspect webspace
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Whose credentials to use
+        type: choice
+        options: [staging, production]
+        default: staging
+      path:
+        description: Folder to list (in addition to the webspace root)
+        type: string
+        default: /
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+    env:
+      SFTP_HOST: ${{ vars.SFTP_HOST }}
+      SFTP_PORT: ${{ vars.SFTP_PORT || '22' }}
+      SFTP_USER: ${{ secrets.SFTP_USER }}
+      LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+      REMOTE_PATH: ${{ vars.REMOTE_PATH }}
+      EXTRA_PATH: ${{ inputs.path }}
+    steps:
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: List folders
+        run: |
+          mkdir -p ~/.ssh
+          lftp <<LFTP
+          set sftp:connect-program "ssh -a -x -p $SFTP_PORT -o StrictHostKeyChecking=accept-new"
+          set net:max-retries 2
+          open -u "$SFTP_USER" --env-password -p $SFTP_PORT sftp://$SFTP_HOST
+          echo "=== webspace root (/) ==="
+          cls -la /
+          echo "=== REMOTE_PATH ($REMOTE_PATH) ==="
+          cls -la "$REMOTE_PATH"
+          echo "=== $EXTRA_PATH ==="
+          cls -la "$EXTRA_PATH"
+          bye
+          LFTP
