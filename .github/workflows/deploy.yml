@@ -52,7 +52,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install lftp
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+        timeout-minutes: 4
+        run: |
+          for i in 1 2 3; do
+            sudo apt-get install -y -qq lftp && break
+            echo "apt attempt $i failed, refreshing package lists"
+            sudo apt-get update -qq || true
+            sleep 5
+          done
+          lftp --version | head -1
       - name: Upload over SFTP
         id: deploy
         env:
