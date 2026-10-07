@@ -1,0 +1,54 @@
+# Delete named files/folders from the Ionos webspace over SFTP.
+# Only ever deletes exactly the paths you type in; nothing is inferred.
+# Run it from the Actions tab when a deploy folder has moved and an old
+# copy of the site is left behind.
+name: Tidy webspace
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Whose credentials to use
+        type: choice
+        options: [staging, production]
+        default: staging
+      paths:
+        description: Space-separated paths to delete, relative to the SFTP root (e.g. "old-copy index.html")
+        type: string
+        required: true
+
+jobs:
+  tidy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+    env:
+      SFTP_HOST: ${{ vars.SFTP_HOST }}
+      SFTP_PORT: ${{ vars.SFTP_PORT || '22' }}
+      SFTP_USER: ${{ secrets.SFTP_USER }}
+      LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+      PATHS: ${{ inputs.paths }}
+    steps:
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Delete the listed paths
+        run: |
+          mkdir -p ~/.ssh
+          cmds=""
+          for p in $PATHS; do
+            case "$p" in
+              /|.|..|"") echo "refusing to delete '$p'"; exit 1 ;;
+            esac
+            cmds="$cmds
+          echo \"deleting $p\"
+          rm -rf \"$p\""
+          done
+          lftp <<LFTP
+          set sftp:connect-program "ssh -a -x -p $SFTP_PORT -o StrictHostKeyChecking=accept-new"
+          set net:max-retries 2
+          open -u "$SFTP_USER" --env-password -p $SFTP_PORT sftp://$SFTP_HOST
+          $cmds
+          echo "=== remaining at / ==="
+          cls -la /
+          bye
+          LFTP

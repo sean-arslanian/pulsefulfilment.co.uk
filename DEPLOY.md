@@ -71,8 +71,18 @@ Optional: variable `SFTP_PORT` (default 22), secret `SFTP_PRIVATE_KEY` (PEM cont
 used instead of the password), variable `DEPLOY_EXCLUDES` (extra space-separated
 regexes for remote paths to leave alone, e.g. `^old-site/ ^cgi-bin/`).
 
-`REMOTE_PATH` is relative to the SFTP root of the webspace, which is the same root
-the domain destinations are chosen from.
+`REMOTE_PATH` is relative to what the SFTP user sees as its root. **Ionos lets you
+restrict an SFTP user to a folder**, and if you do, that folder becomes `/` for the
+deploy while Ionos's own screens (file manager, domain destinations) still show the
+full webspace. Example from the staging setup: the SFTP user is restricted to
+`/Staging`, `REMOTE_PATH` is `/pulse-staging`, so the files really live at
+`/Staging/pulse-staging`, and that full path is what the subdomain's destination must
+be set to. If the user is not restricted, the two views are identical.
+
+Two helper workflows in the Actions tab make this easy to check:
+
+- **Inspect webspace** lists what the SFTP user can see at `/` and at `REMOTE_PATH`.
+- **Tidy webspace** deletes exactly the paths you type in (nothing inferred).
 
 ### 4. GitHub: `main` branch
 
@@ -135,8 +145,10 @@ DEPLOY_TARGET=staging scripts/deploy.sh                # upload
 - **Dry run lists hundreds of deletions**: `REMOTE_PATH` is a folder that holds other
   things. Point it at a folder dedicated to this site, or add patterns to
   `DEPLOY_EXCLUDES`.
-- **Smoke test fails on `deploy-version.txt`**: the domain is not pointing at
-  `REMOTE_PATH`, or a CDN/cache in front of it is serving the old copy.
+- **Smoke test fails on `deploy-version.txt` with a plain Apache 404**: the domain's
+  destination folder is not the folder the deploy wrote to. Run *Inspect webspace*
+  to see where the files are, then set the destination (Domains & SSL → domain →
+  Connect to webspace) to that folder, remembering any SFTP user restriction above.
 - **Redirect test fails on a few URLs**: open the failing URL in a browser. If Ionos
   has its own domain-level redirect (Domains & SSL → redirect) it runs before
   `.htaccess` and can conflict.
