@@ -82,12 +82,22 @@ jobs:
         env:
           SITE_URL: ${{ needs.deploy.outputs.site_url }}
         run: |
-          live="$(curl -sf "$SITE_URL/deploy-version.txt" || true)"
-          echo "live: $live"
-          case "$live" in
-            "${{ github.sha }} "*) echo "version matches" ;;
-            *) echo "deploy-version.txt does not show ${{ github.sha }}"; exit 1 ;;
-          esac
+          # Ionos can take a minute or two to pick up a new folder/subdomain,
+          # so retry before giving up, and follow any http->https redirect.
+          for attempt in 1 2 3 4 5 6 7 8; do
+            live="$(curl -sfL --max-time 20 "$SITE_URL/deploy-version.txt" || true)"
+            case "$live" in
+              "${{ github.sha }} "*) echo "version matches: $live"; exit 0 ;;
+            esac
+            echo "attempt $attempt: got '${live:-<nothing>}', waiting..."
+            sleep 15
+          done
+          echo "::error::$SITE_URL/deploy-version.txt does not show ${{ github.sha }}"
+          echo "--- what the server answered ---"
+          curl -sIL --max-time 20 "$SITE_URL/deploy-version.txt" || true
+          echo "--- homepage headers ---"
+          curl -sIL --max-time 20 "$SITE_URL/" || true
+          exit 1
       - name: Check old WordPress URLs redirect
         env:
           SITE_URL: ${{ needs.deploy.outputs.site_url }}
