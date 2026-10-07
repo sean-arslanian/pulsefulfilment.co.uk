@@ -1,0 +1,32 @@
+# Fetch a URL from a GitHub runner and print its headers, deploy-version.txt
+# and robots.txt. Read-only. Useful when you need to see what a domain is
+# actually serving from a neutral network.
+name: Probe URL
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Site root to probe, e.g. https://pulsefulfilment.co.uk
+        type: string
+        required: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe
+        env:
+          URL: ${{ inputs.url }}
+        run: |
+          u="${URL%/}"
+          echo "=== HEAD $u/ ==="
+          curl -sIL --max-time 20 "$u/" || true
+          echo "=== $u/deploy-version.txt ==="
+          curl -sL --max-time 20 "$u/deploy-version.txt" || true
+          echo
+          echo "=== $u/robots.txt ==="
+          curl -sL --max-time 20 "$u/robots.txt" || true
+          echo
+          echo "=== first 5 lines of $u/ ==="
+          curl -sL --max-time 20 "$u/" | head -5 || true
