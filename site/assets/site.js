@@ -146,6 +146,15 @@
   ========================================================= */
   function track(name, params) {
     try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch (e) {}
+    // Plain object for Google Tag Manager "Custom Event" triggers (GA4 already counted it via gtag above)
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push(Object.assign({ event: name }, params || {})); } catch (e) {}
+  }
+
+  /* Microsoft Clarity: loaded only once analytics cookies are accepted */
+  var CLARITY_ID = 'yuls82v8l7';
+  function loadClarity() {
+    if (window.__clarityLoaded) return; window.__clarityLoaded = true;
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",CLARITY_ID);
   }
   window.pulseTrack = track;
 
@@ -183,6 +192,7 @@
   function setConsent(choice) {
     try { localStorage.setItem('pulse_consent', choice); } catch (e) {}
     try { if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: choice === 'granted' ? 'granted' : 'denied' }); } catch (e) {}
+    if (choice === 'granted') loadClarity();
   }
   function showBanner() {
     if (document.getElementById('cookieBar')) return;
@@ -200,6 +210,7 @@
   }
   var stored = null;
   try { stored = localStorage.getItem('pulse_consent'); } catch (e) {}
+  if (stored === 'granted') loadClarity();
   if (stored !== 'granted' && stored !== 'denied') showBanner();
   document.addEventListener('click', function (e) {
     var l = e.target.closest && e.target.closest('[data-cookie-settings]');

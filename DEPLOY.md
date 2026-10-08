@@ -152,3 +152,34 @@ DEPLOY_TARGET=staging scripts/deploy.sh                # upload
 - **Everything re-uploads every run**: expected. Git checkouts have fresh timestamps,
   so lftp re-sends all files (about 10 MB). It still deletes only what is gone from
   `site/`.
+
+## Tracking reference
+
+| Tool | ID | Where it lives |
+|---|---|---|
+| Google Analytics 4 | `G-MXZB4LCY3H` | inline `gtag` snippet at the top of every page `<head>` |
+| Google Tag Manager | `GTM-KSZ59JP9` | container snippet after the GA4 snippet, plus `<noscript>` after `<body>` |
+| Microsoft Clarity | `yuls82v8l7` | loaded by `site/assets/site.js` only after analytics consent |
+
+**Consent.** Google Consent Mode v2 defaults to `analytics_storage: denied` until the
+visitor accepts the cookie banner (choice stored in `localStorage` as `pulse_consent`).
+GTM inherits the same consent state. Clarity is not loaded at all until consent.
+
+**Events sent to GA4 (via gtag) and pushed to the data layer (for GTM triggers):**
+
+| Event | When |
+|---|---|
+| `generate_lead` | contact or get-pricing form submitted successfully (`form_name`) |
+| `book_call_scheduled` | a Calendly slot is booked in the embedded calendar |
+| `book_call_click` | any link to calendly.com clicked |
+| `phone_click` / `email_click` | `tel:` / `mailto:` link clicked (`link_url`) |
+| `cta_click` | a `.btn` link to /contact or /get-pricing clicked |
+| `cookie_consent` | banner choice (`choice`) |
+
+Mark `generate_lead`, `book_call_scheduled`, `phone_click` and `email_click` as key
+events in GA4 Admin → Events.
+
+**GTM note.** GA4 is configured on the page, not inside GTM. Do **not** add a GA4
+configuration or GA4 event tag in GTM for these events or they will be counted twice.
+Use GTM for additional tags (ads pixels etc.). If you would rather manage GA4 from GTM,
+remove the inline `gtag('config', …)` snippet from the pages first.
