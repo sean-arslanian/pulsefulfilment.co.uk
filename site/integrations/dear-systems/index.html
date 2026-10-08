@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXZB4LCY3H"></script>
+<!-- Google Analytics (GA4) with Consent Mode v2: analytics cookies only after the visitor accepts -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  (function(){var c=null;try{c=localStorage.getItem('pulse_consent');}catch(e){}
+  gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:c==='granted'?'granted':'denied',functionality_storage:'granted',security_storage:'granted'});})();
   gtag('js', new Date());
   gtag('config', 'G-MXZB4LCY3H');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXZB4LCY3H"></script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DEAR Systems (Cin7) Integration — Pulse Fulfilment</title>
@@ -17,11 +19,22 @@
 <meta property="og:title" content="DEAR Systems (Cin7) Integration | Pulse Fulfilment" />
 <meta property="og:description" content="Connect DEAR / Cin7 Core and let Pulse handle the warehouse while your ERP keeps the books." />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="https://pulsefulfilment.co.uk/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Pulse Fulfilment — UK order fulfilment & 3PL" />
+<meta property="og:site_name" content="Pulse Fulfilment" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta property="og:url" content="https://pulsefulfilment.co.uk/integrations/dear-systems" />
 <script>document.documentElement.classList.add('js');</script>
-<link rel="icon" type="image/png" href="../../assets/logo-mark.png" />
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,18..72,400;0,18..72,500;0,18..72,600;0,18..72,700;1,18..72,500&display=swap" />
 <link rel="stylesheet" href="../../assets/styles.css" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pulsefulfilment.co.uk/index.html"},{"@type":"ListItem","position":2,"name":"Integrations","item":"https://pulsefulfilment.co.uk/integrations.html"},{"@type":"ListItem","position":3,"name":"DEAR Systems (Cin7)","item":"https://pulsefulfilment.co.uk/integrations/dear-systems.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I connect DEAR Systems (Cin7) to Pulse Fulfilment?","acceptedAnswer":{"@type":"Answer","text":"It only takes a few minutes. Link your DEAR Systems (Cin7) account (or add your API keys) and Pulse starts importing orders straight away. Our onboarding team sets everything up with you and checks the first orders flow through correctly."}},{"@type":"Question","name":"Will my stock stay in sync with DEAR Systems (Cin7)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pulse keeps inventory levels accurate across DEAR Systems (Cin7) automatically, so you never oversell. Stock updates as orders are picked and as new inventory is booked in at our warehouse."}},{"@type":"Question","name":"Does Pulse handle returns for DEAR Systems (Cin7) orders?","acceptedAnswer":{"@type":"Answer","text":"We do. Returns from DEAR Systems (Cin7) are received, inspected and processed back into sellable stock where appropriate, with the status visible to you and your customers throughout."}}]}</script>
@@ -168,12 +181,12 @@
         <p style="color:#9aa0d8;font-size:14px;max-width:30ch;">Order fulfilment &amp; 3PL built for growing ecommerce brands. We grow when you grow.</p>
         <p style="color:#9aa0d8;font-size:14px;margin-top:14px;">Unit 3–4 Ocean Park, Dock Road,<br/>Wallasey, CH41 1HW<br/>Tel: <a href="tel:01513293803">0151 329 3803</a><br/><a href="mailto:sales@pulsefulfilment.co.uk" style="color:inherit;">sales@pulsefulfilment.co.uk</a></p>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="/services">Services</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/sectors">Sectors</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/contact">Book a call</a></li><li><a href="/news">News</a></li><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy Policy</a></li></ul></div>
-      <div><h4>Plans</h4><ul><li><a href="/pricing">Bronze · 300/mo</a></li><li><a href="/pricing">Silver · 750/mo</a></li><li><a href="/pricing">Gold · 2,000/mo</a></li><li><a href="/pricing">Platinum · 5,000+/mo</a></li></ul></div>
+      <div><h3>Explore</h3><ul><li><a href="/services">Services</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/sectors">Sectors</a></li></ul></div>
+      <div><h3>Company</h3><ul><li><a href="/about">About</a></li><li><a href="/contact">Book a call</a></li><li><a href="/news">News</a></li><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="#cookies" data-cookie-settings>Cookie settings</a></li></ul></div>
+      <div><h3>Plans</h3><ul><li><a href="/pricing">Bronze · 300/mo</a></li><li><a href="/pricing">Silver · 750/mo</a></li><li><a href="/pricing">Gold · 2,000/mo</a></li><li><a href="/pricing">Platinum · 5,000+/mo</a></li></ul></div>
     </div>
     <div class="footer-locations">
-      <h4>Fulfilment locations</h4>
+      <h3>Fulfilment locations</h3>
       <ul class="footer-loc-links">
         <li><a href="/locations/london">Fulfilment in London</a></li>
         <li><a href="/locations/manchester">Fulfilment in Manchester</a></li>

@@ -137,4 +137,75 @@
     }).then(function (r) { return r.json(); });
   };
 
+
+  /* =========================================================
+     ANALYTICS EVENTS + COOKIE CONSENT
+     Events are sent to GA4 via gtag(). In GA4 Admin > Events, mark
+     generate_lead, book_call_scheduled, phone_click and email_click
+     as key events (conversions) to see them in reports.
+  ========================================================= */
+  function track(name, params) {
+    try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch (e) {}
+  }
+  window.pulseTrack = track;
+
+  // Phone, email, Calendly and CTA clicks (works for links added later too)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var text = (a.textContent || '').trim().slice(0, 80);
+    if (href.indexOf('tel:') === 0) track('phone_click', { link_url: href, link_text: text, page_location: location.href });
+    else if (href.indexOf('mailto:') === 0) track('email_click', { link_url: href, link_text: text, page_location: location.href });
+    else if (href.indexOf('calendly.com') !== -1) track('book_call_click', { link_url: href, link_text: text, page_location: location.href });
+    else if (a.classList.contains('btn') && /^\/(contact|get-pricing)(\/|$)/.test(href)) track('cta_click', { link_url: href, link_text: text, page_location: location.href });
+  }, true);
+
+  // Form submissions: wrap the Web3Forms helper so every successful send is counted
+  if (typeof window.pulseSubmitForm === 'function') {
+    var originalSubmit = window.pulseSubmitForm;
+    window.pulseSubmitForm = function (fields) {
+      var subject = (fields && fields.subject) || '';
+      var formName = /pricing/i.test(subject) ? 'get_pricing_form' : 'contact_form';
+      return originalSubmit(fields).then(function (res) {
+        if (res && res.success) track('generate_lead', { form_name: formName, page_location: location.href });
+        return res;
+      });
+    };
+  }
+
+  // Calendly booking completed (Calendly posts a message to the page when a slot is booked)
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.event === 'calendly.event_scheduled') track('book_call_scheduled', { page_location: location.href });
+  });
+
+  // Cookie consent banner (Google Consent Mode v2). Choice is stored in localStorage.
+  function setConsent(choice) {
+    try { localStorage.setItem('pulse_consent', choice); } catch (e) {}
+    try { if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: choice === 'granted' ? 'granted' : 'denied' }); } catch (e) {}
+  }
+  function showBanner() {
+    if (document.getElementById('cookieBar')) return;
+    var bar = document.createElement('div');
+    bar.id = 'cookieBar'; bar.className = 'cookie-bar'; bar.setAttribute('role', 'dialog'); bar.setAttribute('aria-label', 'Cookie settings');
+    bar.innerHTML = '<p>We use cookies to understand how our site is used. Analytics cookies are only set if you accept. <a href="/privacy#cookies">Privacy &amp; cookie policy</a></p>' +
+      '<div class="cookie-actions"><button type="button" class="btn btn-ghost" data-consent="denied">Reject</button><button type="button" class="btn btn-grad" data-consent="granted">Accept</button></div>';
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-consent]'); if (!b) return;
+      setConsent(b.getAttribute('data-consent'));
+      track('cookie_consent', { choice: b.getAttribute('data-consent') });
+      bar.remove();
+    });
+    document.body.appendChild(bar);
+  }
+  var stored = null;
+  try { stored = localStorage.getItem('pulse_consent'); } catch (e) {}
+  if (stored !== 'granted' && stored !== 'denied') showBanner();
+  document.addEventListener('click', function (e) {
+    var l = e.target.closest && e.target.closest('[data-cookie-settings]');
+    if (!l) return;
+    e.preventDefault(); showBanner();
+    var bar = document.getElementById('cookieBar'); if (bar) bar.scrollIntoView({ block: 'end' });
+  });
+
 })();

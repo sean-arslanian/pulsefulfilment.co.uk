@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXZB4LCY3H"></script>
+<!-- Google Analytics (GA4) with Consent Mode v2: analytics cookies only after the visitor accepts -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  (function(){var c=null;try{c=localStorage.getItem('pulse_consent');}catch(e){}
+  gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:c==='granted'?'granted':'denied',functionality_storage:'granted',security_storage:'granted'});})();
   gtag('js', new Date());
   gtag('config', 'G-MXZB4LCY3H');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXZB4LCY3H"></script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pulse Fulfilment — Order Fulfilment &amp; 3PL for Ecommerce</title>
@@ -18,29 +20,29 @@
 <meta property="og:title" content="Pulse Fulfilment — Order Fulfilment & 3PL for Ecommerce" />
 <meta property="og:description" content="UK order fulfilment & 3PL for growing ecommerce brands — same-day dispatch, smart carriers, and a team that scales." />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="https://pulsefulfilment.co.uk/assets/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Pulse Fulfilment — UK order fulfilment & 3PL" />
+<meta property="og:site_name" content="Pulse Fulfilment" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
 <script>document.documentElement.classList.add('js');</script>
-<link rel="icon" type="image/png" href="assets/logo-mark.png" />
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,18..72,400;0,18..72,500;0,18..72,600;0,18..72,700;1,18..72,500&display=swap" />
 <link rel="stylesheet" href="assets/styles.css" />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet" />
 <style>
-/* ============ TYPOGRAPHY PERSONALITY (tweakable) ============ */
-:root { --headline: var(--display); --h-weight: 600; --h-track: -0.02em; }
+/* ============ TYPOGRAPHY (editorial: serif headlines, sans UI) ============ */
 h1, h2, h3, h4 { font-family: var(--headline); font-weight: var(--h-weight); letter-spacing: var(--h-track); }
-/* Editorial — refined serif headlines, sans UI */
-body[data-type="editorial"] { --headline: 'Newsreader', Georgia, 'Times New Roman', serif; --h-track: -0.005em; }
-body[data-type="editorial"] .lead { font-weight: 400; }
-/* Characterful — humanist grotesque with real personality */
-body[data-type="refined"] { --headline: 'Bricolage Grotesque', system-ui, sans-serif; --h-track: -0.015em; }
-/* Technical — original Space Grotesk */
-body[data-type="technical"] { --headline: 'Space Grotesk', system-ui, sans-serif; --h-track: -0.02em; }
-/* Gradient accent words — italic editorial treatment */
-body[data-accent="on"] .grad-text { font-style: italic; }
-body[data-type="editorial"][data-accent="on"] .grad-text { letter-spacing: 0; }
-/* Label style — kill the all-caps tracked "AI" eyebrow look */
-body[data-labels="sentence"] .eyebrow { text-transform: none; letter-spacing: 0.005em; font-weight: 600; font-size: 14px; }
-body[data-labels="sentence"] .eyebrow::before { width: 20px; }
+.lead { font-weight: 400; }
+/* Sentence-case eyebrow labels on the homepage */
+.eyebrow { text-transform: none; letter-spacing: 0.005em; font-weight: 600; font-size: 14px; }
+.eyebrow::before { width: 20px; }
 
 .hero { position: relative; overflow: hidden; padding-top: clamp(40px, 6vw, 80px); }
 .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
@@ -230,6 +232,7 @@ body[data-labels="sentence"] .eyebrow::before { width: 20px; }
   .float-card { left: 8px; }
 }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://pulsefulfilment.co.uk/#organization", "name": "Pulse Fulfilment", "legalName": "Pulse Fulfilment Limited", "url": "https://pulsefulfilment.co.uk/", "logo": {"@type": "ImageObject", "url": "https://pulsefulfilment.co.uk/assets/logo.png"}, "image": "https://pulsefulfilment.co.uk/assets/og-default.jpg", "description": "UK order fulfilment and 3PL for growing ecommerce brands: same-day dispatch, smart carrier selection and 45+ sales channel integrations.", "foundingDate": "2024", "telephone": "+44 151 329 3803", "email": "sales@pulsefulfilment.co.uk", "address": {"@type": "PostalAddress", "streetAddress": "Unit 3-4 Ocean Park, Dock Road", "addressLocality": "Wallasey", "addressRegion": "Merseyside", "postalCode": "CH41 1HW", "addressCountry": "GB"}, "areaServed": {"@type": "Country", "name": "United Kingdom"}, "contactPoint": [{"@type": "ContactPoint", "telephone": "+44 151 329 3803", "email": "sales@pulsefulfilment.co.uk", "contactType": "sales", "areaServed": "GB", "availableLanguage": "en"}]}, {"@type": "WebSite", "@id": "https://pulsefulfilment.co.uk/#website", "url": "https://pulsefulfilment.co.uk/", "name": "Pulse Fulfilment", "publisher": {"@id": "https://pulsefulfilment.co.uk/#organization"}, "inLanguage": "en-GB"}]}</script>
 </head>
 <body>
 
@@ -482,12 +485,12 @@ body[data-labels="sentence"] .eyebrow::before { width: 20px; }
         <p style="color:#9aa0d8; font-size:14px; max-width:30ch;">Order fulfilment &amp; 3PL built for growing ecommerce brands. We grow when you grow.</p>
         <p style="color:#9aa0d8; font-size:14px; margin-top:14px;">Unit 3–4 Ocean Park, Dock Road,<br/>Wallasey, CH41 1HW<br/>Tel: <a href="tel:01513293803">0151 329 3803</a><br/><a href="mailto:sales@pulsefulfilment.co.uk" style="color:inherit;">sales@pulsefulfilment.co.uk</a></p>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="/services">Services</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/sectors">Sectors</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/contact">Book a call</a></li><li><a href="/news">News</a></li><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy Policy</a></li></ul></div>
-      <div><h4>Plans</h4><ul><li><a href="/pricing">Bronze · 300/mo</a></li><li><a href="/pricing">Silver · 750/mo</a></li><li><a href="/pricing">Gold · 2,000/mo</a></li><li><a href="/pricing">Platinum · 5,000+/mo</a></li></ul></div>
+      <div><h3>Explore</h3><ul><li><a href="/services">Services</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/sectors">Sectors</a></li></ul></div>
+      <div><h3>Company</h3><ul><li><a href="/about">About</a></li><li><a href="/contact">Book a call</a></li><li><a href="/news">News</a></li><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="#cookies" data-cookie-settings>Cookie settings</a></li></ul></div>
+      <div><h3>Plans</h3><ul><li><a href="/pricing">Bronze · 300/mo</a></li><li><a href="/pricing">Silver · 750/mo</a></li><li><a href="/pricing">Gold · 2,000/mo</a></li><li><a href="/pricing">Platinum · 5,000+/mo</a></li></ul></div>
     </div>
     <div class="footer-locations">
-      <h4>Fulfilment locations</h4>
+      <h3>Fulfilment locations</h3>
       <ul class="footer-loc-links">
         <li><a href="/locations/london">Fulfilment in London</a></li>
         <li><a href="/locations/manchester">Fulfilment in Manchester</a></li>
@@ -533,168 +536,8 @@ body[data-labels="sentence"] .eyebrow::before { width: 20px; }
 })();
 </script>
 
-<!-- ============ TWEAKS PANEL ============ -->
-<style>
-#tweaks { position: fixed; right: 22px; bottom: 22px; z-index: 1000; width: 312px; max-width: calc(100vw - 32px);
-  background: #10163d; color: #fff; border: 1px solid rgba(255,255,255,.12); border-radius: 20px;
-  box-shadow: 0 30px 80px -28px rgba(0,0,0,.7); font-family: 'Manrope', system-ui, sans-serif;
-  display: none; overflow: hidden; }
-#tweaks.open { display: block; }
-#tweaks .tk-head { display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  padding: 15px 16px; cursor: grab; background: rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.1); }
-#tweaks .tk-head.drag { cursor: grabbing; }
-#tweaks .tk-title { display: flex; align-items: center; gap: 9px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px; }
-#tweaks .tk-title .dot { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(100deg,#FF2E7E,#FFB627); box-shadow: 0 0 0 4px rgba(255,46,126,.18); }
-#tweaks .tk-x { background: rgba(255,255,255,.08); border: 0; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 15px; line-height: 1; transition: background .15s; }
-#tweaks .tk-x:hover { background: rgba(255,255,255,.18); }
-#tweaks .tk-body { padding: 16px; display: grid; gap: 18px; max-height: 70vh; overflow-y: auto; }
-#tweaks .tk-row .tk-label { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: #9aa0d8; margin-bottom: 9px; }
-#tweaks .tk-hint { font-size: 12px; color: #7e85c4; margin-top: 8px; line-height: 1.45; }
-#tweaks .seg { display: flex; gap: 4px; background: rgba(255,255,255,.06); border-radius: 11px; padding: 4px; }
-#tweaks .seg button { flex: 1; border: 0; background: transparent; color: #C9CDF0; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 13px; padding: 9px 6px; border-radius: 8px; cursor: pointer; transition: background .18s, color .18s; white-space: nowrap; }
-#tweaks .seg button.on { background: linear-gradient(100deg,#FF2E7E,#FFB627); color: #fff; }
-#tweaks .seg button:not(.on):hover { color: #fff; }
-#tweaks .tk-foot { padding: 12px 16px 15px; border-top: 1px solid rgba(255,255,255,.1); }
-#tweaks .tk-reset { width: 100%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; padding: 10px; border-radius: 10px; cursor: pointer; transition: background .15s; }
-#tweaks .tk-reset:hover { background: rgba(255,255,255,.14); }
-@media (max-width: 520px){ #tweaks { right: 12px; left: 12px; bottom: 12px; width: auto; } }
-</style>
-
-<div id="tweaks" aria-label="Tweaks panel">
-  <div class="tk-head" id="tkHead">
-    <span class="tk-title"><span class="dot"></span> Tweaks</span>
-    <button class="tk-x" id="tkClose" aria-label="Close Tweaks">✕</button>
-  </div>
-  <div class="tk-body">
-    <div class="tk-row">
-      <div class="tk-label">Headline style</div>
-      <div class="seg" data-key="headlineFont">
-        <button data-val="editorial">Editorial</button>
-        <button data-val="refined">Character</button>
-        <button data-val="technical">Technical</button>
-      </div>
-      <div class="tk-hint" id="fontHint"></div>
-    </div>
-    <div class="tk-row">
-      <div class="tk-label">Headline weight</div>
-      <div class="seg" data-key="headlineWeight">
-        <button data-val="400">Light</button>
-        <button data-val="500">Regular</button>
-        <button data-val="600">Bold</button>
-      </div>
-    </div>
-    <div class="tk-row">
-      <div class="tk-label">Eyebrow labels</div>
-      <div class="seg" data-key="labelStyle">
-        <button data-val="sentence">Sentence</button>
-        <button data-val="upper">UPPERCASE</button>
-      </div>
-    </div>
-    <div class="tk-row">
-      <div class="tk-label">Accent words</div>
-      <div class="seg" data-key="italicAccent">
-        <button data-val="on">Italic</button>
-        <button data-val="off">Upright</button>
-      </div>
-    </div>
-  </div>
-  <div class="tk-foot"><button class="tk-reset" id="tkReset">Reset to editorial default</button></div>
-</div>
-
 <script>
 (function(){
-  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "headlineFont": "editorial",
-    "headlineWeight": "600",
-    "labelStyle": "sentence",
-    "italicAccent": false
-  }/*EDITMODE-END*/;
-
-  const hints = {
-    editorial: 'Refined serif headlines over clean sans UI — crafted, magazine-like.',
-    refined: 'A humanist grotesque with real character — friendly, not generic.',
-    technical: 'The original geometric look (Space Grotesk).'
-  };
-
-  const state = Object.assign({}, TWEAK_DEFAULTS);
-
-  function apply(){
-    const b = document.body;
-    b.dataset.type = state.headlineFont;
-    b.dataset.labels = state.labelStyle;
-    b.dataset.accent = (state.italicAccent === true || state.italicAccent === 'on') ? 'on' : 'off';
-    b.style.setProperty('--h-weight', String(state.headlineWeight));
-    const fh = document.getElementById('fontHint');
-    if (fh) fh.textContent = hints[state.headlineFont] || '';
-    // reflect button states
-    document.querySelectorAll('#tweaks .seg').forEach(seg => {
-      const key = seg.dataset.key;
-      let cur = state[key];
-      if (key === 'italicAccent') cur = (cur === true || cur === 'on') ? 'on' : 'off';
-      cur = String(cur);
-      seg.querySelectorAll('button').forEach(btn => btn.classList.toggle('on', btn.dataset.val === cur));
-    });
-  }
-
-  function setKey(key, val){
-    if (key === 'italicAccent') val = (val === 'on');
-    state[key] = val;
-    apply();
-    try { window.parent.postMessage({ type:'__edit_mode_set_keys', edits: { [key]: val } }, '*'); } catch(e){}
-  }
-
-  // wire segmented controls
-  document.querySelectorAll('#tweaks .seg').forEach(seg => {
-    seg.addEventListener('click', e => {
-      const btn = e.target.closest('button'); if(!btn) return;
-      setKey(seg.dataset.key, btn.dataset.val);
-    });
-  });
-
-  // reset
-  document.getElementById('tkReset').addEventListener('click', () => {
-    Object.assign(state, TWEAK_DEFAULTS);
-    apply();
-    try { window.parent.postMessage({ type:'__edit_mode_set_keys', edits: TWEAK_DEFAULTS }, '*'); } catch(e){}
-  });
-
-  // panel show/hide via host
-  const panel = document.getElementById('tweaks');
-  window.addEventListener('message', (e) => {
-    const t = e.data && e.data.type;
-    if (t === '__activate_edit_mode') panel.classList.add('open');
-    else if (t === '__deactivate_edit_mode') panel.classList.remove('open');
-  });
-  document.getElementById('tkClose').addEventListener('click', () => {
-    panel.classList.remove('open');
-    try { window.parent.postMessage({ type:'__edit_mode_dismissed' }, '*'); } catch(e){}
-  });
-
-  // drag
-  (function(){
-    const head = document.getElementById('tkHead');
-    let sx, sy, ox, oy, dragging = false;
-    head.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.tk-x')) return;
-      dragging = true; head.classList.add('drag');
-      const r = panel.getBoundingClientRect();
-      ox = r.left; oy = r.top; sx = e.clientX; sy = e.clientY;
-      panel.style.right = 'auto'; panel.style.bottom = 'auto';
-      panel.style.left = ox + 'px'; panel.style.top = oy + 'px';
-      e.preventDefault();
-    });
-    window.addEventListener('mousemove', (e) => {
-      if (!dragging) return;
-      panel.style.left = Math.max(8, Math.min(window.innerWidth - panel.offsetWidth - 8, ox + e.clientX - sx)) + 'px';
-      panel.style.top  = Math.max(8, Math.min(window.innerHeight - 60, oy + e.clientY - sy)) + 'px';
-    });
-    window.addEventListener('mouseup', () => { dragging = false; head.classList.remove('drag'); });
-  })();
-
-  // apply defaults immediately (even when panel hidden), then announce availability
-  apply();
-  try { window.parent.postMessage({ type:'__edit_mode_available' }, '*'); } catch(e){}
-
   // rotate the live-feed location label
   (function(){
     const el = document.querySelector('#feedLoc .loc-txt');
