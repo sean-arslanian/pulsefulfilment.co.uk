@@ -109,7 +109,7 @@ WordPress folder again.
 - Pending: Google Search Console's Sitemaps report still shows "could not be read /
   General HTTP error" despite the file being valid and served correctly. Known
   Search Console lag; re-check after a few days before doing anything.
-- To do: add analytics (GA4/GTM) to every page `<head>` if wanted.
+- Done: Google Analytics GA4 tag (G-MXZB4LCY3H) in every page head, live since 8 Oct.
 - To do: after 30 clean days, cancel the old Ionos package that still holds WordPress.
 
 ## Day to day
