@@ -36,3 +36,17 @@ jobs:
           curl -sL --max-time 20 "$u/sitemap.xml" | head -6 || true
           echo "=== HEAD http://www variant ==="
           curl -sI --max-time 20 "http://www.${u#https://}/sitemap.xml" || true
+          echo "=== sitemap deep checks ==="
+          UA="Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+          for variant in "$u/sitemap.xml" "$u/sitemap.xml?v=2"; do
+            for proto in --http1.1 --http2; do
+              out=$(curl -s $proto --compressed -A "$UA" -D /tmp/h -o /tmp/b --max-time 20 -w '%{http_code} %{size_download}B %{time_total}s' "$variant")
+              enc=$(grep -i '^content-encoding' /tmp/h | tr -d '\r' || true)
+              echo "$variant $proto -> $out enc=[${enc:-none}] md5=$(md5sum /tmp/b | cut -c1-12) urls=$(grep -c '<loc>' /tmp/b)"
+            done
+          done
+          echo "--- raw gzip request (no auto-decode) ---"
+          curl -s -H 'Accept-Encoding: gzip' -A "$UA" -D - -o /tmp/g --max-time 20 "$u/sitemap.xml" | grep -iE 'HTTP/|content-encoding|content-length|content-type'
+          file /tmp/g | sed 's#/tmp/g: ##'
+          echo "--- 10 quick GETs to spot rate limiting ---"
+          for i in $(seq 1 10); do curl -s -o /dev/null -A "$UA" --max-time 20 -w '%{http_code} ' "$u/sitemap.xml"; done; echo
