@@ -48,5 +48,10 @@ jobs:
           echo "--- raw gzip request (no auto-decode) ---"
           curl -s -H 'Accept-Encoding: gzip' -A "$UA" -D - -o /tmp/g --max-time 20 "$u/sitemap.xml" | grep -iE 'HTTP/|content-encoding|content-length|content-type'
           file /tmp/g | sed 's#/tmp/g: ##'
+          echo "--- crawler user agents ---"
+          for ua in "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" "Google-Site-Verification/1.0" "curl/8"; do
+            printf '%s -> ' "${ua:0:40}"; curl -s -o /dev/null -A "$ua" --max-time 20 -w '%{http_code} %{size_download}B\n' "$u/sitemap.xml"
+          done
+          echo "--- runner IPv6? ---"; (curl -s -6 --max-time 10 https://ifconfig.co >/dev/null && echo yes) || echo "no IPv6 on this runner"
           echo "--- 10 quick GETs to spot rate limiting ---"
           for i in $(seq 1 10); do curl -s -o /dev/null -A "$UA" --max-time 20 -w '%{http_code} ' "$u/sitemap.xml"; done; echo
