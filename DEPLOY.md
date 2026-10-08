@@ -101,14 +101,16 @@ folder, untouched.
 **Rollback:** Domains & SSL → `pulsefulfilment.co.uk` → Connect to webspace → pick the
 WordPress folder again.
 
-**Still to do after go-live:**
+**Post go-live status (8 Oct 2026):**
 
-1. Search Console: submit `https://pulsefulfilment.co.uk/sitemap.xml`; watch the Pages
-   report for 6 weeks.
-2. Send one test message through the contact form and click the Web3Forms confirmation
-   email it triggers the first time.
-3. Add analytics (GA4/GTM) to every page `<head>` if wanted.
-4. After 30 clean days: delete the WordPress folder and database, cancel plugin licences.
+- Done: contact form tested end to end on the live site (Web3Forms confirmed).
+- Done: Bing Webmaster Tools reads `sitemap.xml` (Success, 71 URLs).
+- Done: Google has indexed the pages; URL Inspection live test passes.
+- Pending: Google Search Console's Sitemaps report still shows "could not be read /
+  General HTTP error" despite the file being valid and served correctly. Known
+  Search Console lag; re-check after a few days before doing anything.
+- To do: add analytics (GA4/GTM) to every page `<head>` if wanted.
+- To do: after 30 clean days, cancel the old Ionos package that still holds WordPress.
 
 ## Day to day
 
