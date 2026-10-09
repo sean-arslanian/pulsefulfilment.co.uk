@@ -106,9 +106,10 @@ WordPress folder again.
 - Done: contact form tested end to end on the live site (Web3Forms confirmed).
 - Done: Bing Webmaster Tools reads `sitemap.xml` (Success, 71 URLs).
 - Done: Google has indexed the pages; URL Inspection live test passes.
-- Pending: Google Search Console's Sitemaps report still shows "could not be read /
-  General HTTP error" despite the file being valid and served correctly. Known
-  Search Console lag; re-check after a few days before doing anything.
+- Done (9 Oct): Google Search Console reads `sitemap.xml` (Success). It showed "could not
+  be read / General HTTP error" for two days first; that was Google-side lag, not the file.
+- Done: Google Tag Manager (GTM-KSZ59JP9) and Microsoft Clarity (yuls82v8l7), see
+  "Tracking reference" below.
 - Done: Google Analytics GA4 tag (G-MXZB4LCY3H) in every page head, live since 8 Oct.
 - To do: after 30 clean days, cancel the old Ionos package that still holds WordPress.
 
